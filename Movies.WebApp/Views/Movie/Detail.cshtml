@@ -12,9 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <article>
-    <section class="movie-detail" style="background:url(@Model.BackdropURL)">
-        <div class="container">
 
+    <section class="movie-detail position-relative" style="background:url(@Model.BackdropURL)">
+       
+        <div class="container">
+             
             <figure class="movie-detail-banner">
 
                 <img src="@Model.PosterURL" alt="">
@@ -30,7 +32,7 @@
                 @* <p class="detail-subtitle">New Episodes</p> *@
 
                 <h1 class="h1 detail-title">
-                  @Model.Title
+                    @Model.Title
                 </h1>
 
                 <div class="meta-wrapper">
@@ -70,7 +72,7 @@
                 </div>
 
                 <p class="storyline">
-                   @Model.Description
+                    @Model.Description
                 </p>
 
                 <div class="details-actions">
@@ -95,7 +97,7 @@
 
                 </div>
 
-                <a href="./assets/images/movie-4.png" download class="download-btn">
+                <a href="~/assets/images/movie-4.png" download class="download-btn">
                     <span>Download</span>
 
                     <ion-icon name="download-outline"></ion-icon>
@@ -126,14 +128,14 @@
                 <li>
                     <div class="movie-card">
 
-                        <a href="./movie-details.html">
+                        <a href="~/movie-details.html">
                             <figure class="card-banner">
-                                <img src="./assets/images/series-1.png" alt="Moon Knight movie poster">
+                                <img src="~/assets/images/series-1.png" alt="Moon Knight movie poster">
                             </figure>
                         </a>
 
                         <div class="title-wrapper">
-                            <a href="./movie-details.html">
+                            <a href="~/movie-details.html">
                                 <h3 class="card-title">Moon Knight</h3>
                             </a>
 
@@ -162,14 +164,14 @@
                 <li>
                     <div class="movie-card">
 
-                        <a href="./movie-details.html">
+                        <a href="~/movie-details.html">
                             <figure class="card-banner">
-                                <img src="./assets/images/series-2.png" alt="Halo movie poster">
+                                <img src="~/assets/images/series-2.png" alt="Halo movie poster">
                             </figure>
                         </a>
 
                         <div class="title-wrapper">
-                            <a href="./movie-details.html">
+                            <a href="~/movie-details.html">
                                 <h3 class="card-title">Halo</h3>
                             </a>
 
@@ -198,14 +200,14 @@
                 <li>
                     <div class="movie-card">
 
-                        <a href="./movie-details.html">
+                        <a href="~/movie-details.html">
                             <figure class="card-banner">
-                                <img src="./assets/images/series-3.png" alt="Vikings: Valhalla movie poster">
+                                <img src="~/assets/images/series-3.png" alt="Vikings: Valhalla movie poster">
                             </figure>
                         </a>
 
                         <div class="title-wrapper">
-                            <a href="./movie-details.html">
+                            <a href="~/movie-details.html">
                                 <h3 class="card-title">Vikings: Valhalla</h3>
                             </a>
 
@@ -234,14 +236,14 @@
                 <li>
                     <div class="movie-card">
 
-                        <a href="./movie-details.html">
+                        <a href="~/movie-details.html">
                             <figure class="card-banner">
-                                <img src="./assets/images/series-4.png" alt="Money Heist movie poster">
+                                <img src="~/assets/images/series-4.png" alt="Money Heist movie poster">
                             </figure>
                         </a>
 
                         <div class="title-wrapper">
-                            <a href="./movie-details.html">
+                            <a href="~/movie-details.html">
                                 <h3 class="card-title">Money Heist</h3>
                             </a>
 
