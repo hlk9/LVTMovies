@@ -12,5 +12,16 @@ namespace Movies.WebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult Personal_Page()
+        {
+            return View(); 
+        }
+
     }
 }
