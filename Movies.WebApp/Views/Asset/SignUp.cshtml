@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-image: url('https://wallpapers.com/images/hd/movie-poster-background-tvke0r6ko2jpix0j.jpg'); /* Thay đổi với đường dẫn của hình ảnh của bạn */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 100px;
+            color: #fff;
+        }
+
+        .input-group-text svg {
+            fill: #fff;
+        }
+
+        .form-text a {
+            color: #ffc107;
+        }
+
+            .form-text a:hover {
+                color: #ffeb3b;
+            }
+
+        .btn-primary {
+            background-color: hsl(57.04deg 97.38% 44.9%);
+            border-color: hsl(57.04deg 97.38% 44.9%);
+        }
+
+        /* Độ to vừa đủ cho các dòng trong form */
+        .form-group {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        /* Các nút ra giữa */
+        .btn-block {
+            display: block;
+            width: 50%; /* hoặc số % bạn muốn */
+            margin: 0 auto;
+        }
+
+        /* Làm cho ô input lớn hơn theo chiều dọc */
+        .form-control {
+            height: 50px; /* hoặc số px bạn muốn */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <form method="post" class="form-container" asp-controller="Asset" asp-action="SignUp">
+                    <!-- FullName Input -->
+                    <div class="form-group">
+                        <label for="fullName">Họ và tên</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Họ và tên" name="fullName">
+                    </div>
+                    <!-- Email Input -->
+                    <div class="form-group">
+                        <label for="email">Địa chỉ Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Địa chỉ Email" name="email">
+                    </div>
+                    <!-- UserName Input -->
+                    <div class="form-group">
+                        <label for="userName">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Tên đăng nhập" name="userName">
+                    </div>
+                    <!-- Password Input -->
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" class="form-control" id="password" placeholder="Mật khẩu" name="password">
+                    </div>
+                   
+                    <!-- Gender Input -->
+                    <div class="form-group">
+                        <label for="gender">Giới tính</label>
+                        <select class="form-control " id="gender" name="gender" style="background-color:white" >
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                            
+                        </select>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block" >Đăng ký</button>
+                    <!-- Login Link -->
+                    <div class="text-center mt-3">
+                        Đã có tài khoản? <a asp-controller="Asset" asp-action="Login">Đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
