@@ -88,7 +88,12 @@
 
 li { list-style: none; }
 
-a { text-decoration: none; }
+a 
+{ 
+    text-decoration: none !important;
+}
+
+
 
 a,
 img,
@@ -145,7 +150,10 @@ body.active { overflow: hidden; }
 
 .h2 { font-size: var(--fs-2); }
 
-.h3 { font-size: var(--fs-6); }
+.h3 
+{
+    font-size: var(--fs-6);
+}
 
 .section-subtitle {
   color: var(--citrine);
@@ -305,9 +313,10 @@ body.active { overflow: hidden; }
 }
 
 .movie-card .card-title {
-  color: var(--white);
-  font-size: var(--fs-7);
-  transition: var(--transition-1);
+    color: var(--white);
+    font-size: var(--fs-7);
+    transition: var(--transition-1);
+    font-weight: bold !important;
 }
 
 .movie-card .card-title:is(:hover, :focus) { color: var(--citrine); }
