@@ -27,9 +27,8 @@ namespace Movies.DAL.Migrations
                 name: "Genres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "NVARCHAR(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -42,14 +41,16 @@ namespace Movies.DAL.Migrations
                 name: "Movies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "NVARCHAR(500)", maxLength: 500, nullable: false),
+                    Description = table.Column<string>(type: "NVARCHAR(3000)", maxLength: 3000, nullable: true),
                     StreamURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RentalPrice = table.Column<double>(type: "float", nullable: false),
                     SalePrice = table.Column<double>(type: "float", nullable: false),
-                    Status = table.Column<byte>(type: "tinyint", nullable: false)
+                    Status = table.Column<string>(type: "NVARCHAR(30)", maxLength: 30, nullable: false),
+                    Bugget = table.Column<double>(type: "float", nullable: false),
+                    BackdropURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PosterURL = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

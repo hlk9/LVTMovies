@@ -40,10 +40,7 @@ namespace Movies.DAL.Migrations
             modelBuilder.Entity("Movies.DAL.Models.Genre", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -51,7 +48,8 @@ namespace Movies.DAL.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -64,12 +62,21 @@ namespace Movies.DAL.Migrations
             modelBuilder.Entity("Movies.DAL.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("BackdropURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Bugget")
+                        .HasColumnType("float");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(3000)
+                        .HasColumnType("NVARCHAR");
+
+                    b.Property<string>("PosterURL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("RentalPrice")
@@ -78,15 +85,18 @@ namespace Movies.DAL.Migrations
                     b.Property<double>("SalePrice")
                         .HasColumnType("float");
 
-                    b.Property<byte>("Status")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<string>("StreamURL")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("NVARCHAR");
 
                     b.HasKey("Id");
 
