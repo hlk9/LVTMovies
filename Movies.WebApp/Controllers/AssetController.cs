@@ -8,7 +8,7 @@ namespace Movies.WebApp.Controllers
         {
             return View();
         }
-        public IActionResult SingUp()
+        public IActionResult Login()
         {
             return View();
         }

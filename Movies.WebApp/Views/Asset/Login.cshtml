@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-image: url('https://wallpapers.com/images/hd/movie-poster-background-tvke0r6ko2jpix0j.jpg'); /* Thay đổi với đường dẫn của hình ảnh của bạn */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 100px;
+            color: #fff;
+        }
+
+        .input-group-text svg {
+            fill: #fff;
+        }
+
+        .form-text a {
+            color: #ffc107;
+        }
+
+            .form-text a:hover {
+                color: #ffeb3b;
+            }
+
+        .btn-primary {
+            background-color: hsl(57.04deg 97.38% 44.9%);
+            border-color: hsl(57.04deg 97.38% 44.9%);
+        }
+
+       
+        .form-group {
+            width: 100%;
+        }
+
+        
+        .btn-block {
+            display: block;
+            width: 50%; 
+            margin: 0 auto;
+        }
+
+       
+        .form-control {
+            height: 50px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <form method="post" class="form-container">
+                    <!-- Email Input -->
+                    <div class="form-group">
+                        <label for="email">Địa chỉ Email</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control" id="email" placeholder="Địa chỉ Email" name="email">
+                            <span class="text-danger">@* Validation message here *@</span>
+                        </div>
+                    </div>
+                    <!-- Password Input -->
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control" id="password" placeholder="Mật khẩu" name="password">
+                            <span class="text-danger">@* Validation message here *@</span>
+                            <br />
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-outline-secondary">Hiện</button>
+                            </div>
+                        </div>
+                        
+                        <small id="passwordHelp" class="form-text text-muted">
+                            <a href="/quen-mat-khau">Quên mật khẩu?</a>
+                        </small>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                    <!-- Register Link -->
+                    <div class="text-center mt-3">
+                        Chưa có tài khoản? <a href="/dang-ki">Đăng kí</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+    
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
+
