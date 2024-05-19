@@ -7,6 +7,7 @@
     <title>The LVT - Kho phim chất lượng của bạn</title>
     <link rel="shortcut icon" href="~/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +41,7 @@
                     </select>
                 </div>
 
-                <button class="btn btn-primary">Đăng nhập</button>
+                <button class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid #e2d703">Đăng nhập</button>
 
             </div>
 
@@ -65,23 +66,23 @@
                 <ul class="navbar-list">
 
                     <li>
-                        <a href="./index.html" class="navbar-link">Trang chủ</a>
+                        <a href="./index.html" class="navbar-link text-decoration-none">Trang chủ</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Phim</a>
+                        <a href="#" class="navbar-link text-decoration-none">Phim</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Truyền hình</a>
+                        <a href="#" class="navbar-link text-decoration-none">Truyền hình</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Thể loại</a>
+                        <a href="#" class="navbar-link text-decoration-none">Thể loại</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Báo giá</a>
+                        <a href="#" class="navbar-link text-decoration-none">Báo giá</a>
                     </li>
 
                 </ul>
@@ -125,14 +126,14 @@
         </div>
     </header>
     <div>
-        <main role="main" class="pb-3">
+        <main role="main" class="">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" style="background-color: #1f2229">
 
-        <div class="footer-top">
+        <div class="footer-top" style="background: url(https://codewithsadee.github.io/filmlane/assets/images/footer-bg.jpg) no-repeat">
             <div class="container">
 
                 <div class="footer-brand-wrapper">
