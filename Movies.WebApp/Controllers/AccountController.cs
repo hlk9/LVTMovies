@@ -18,6 +18,12 @@ namespace Movies.WebApp.Controllers
             return View(lstAccount);
         }
 
+        public IActionResult ListOfRentedMovies()
+        {
+            var lstRented = _context.Users.ToList();
+            return View(lstRented);
+        }
+
         public IActionResult Details(Guid id)
         {
             var objAccount = _context.Users.Find(id);
