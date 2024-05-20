@@ -1,0 +1,401 @@
+﻿@model IEnumerable<Movies.DAL.Models.MovieActor>
+
+@{
+    ViewData["Title"] = "ListOfMoviesByActors";
+}
+
+
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActorID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActorID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@
+
+<div style="background: url(https://codewithsadee.github.io/filmlane/assets/images/footer-bg.jpg)">
+    <section class="cta py-5" style="background: url(https://codewithsadee.github.io/filmlane/assets/images/cta-bg.jpg) no-repeat">
+        <div class="container">
+
+            <form action="" class="cta-form">
+                <input type="email" name="email" required placeholder="Enter your email" class="email-field">
+
+                <button type="submit" class="cta-form-btn">Tìm kiếm</button>
+            </form>
+
+        </div>
+    </section>
+    <section class="upcoming" style="background: url(https://codewithsadee.github.io/filmlane/assets/images/footer-bg.jpg) no-repeat">
+        <div class="container">
+
+            <div class="flex-wrapper ">
+
+                <div class="title-wrapper">
+                    <p class=" h3 section-subtitle">Chris Hemsworth</p>
+                   
+                </div>
+
+                <div class="justify-content-end">
+                    <p class="h3 section-title">Xem thêm</p>
+                </div>
+
+
+            </div>
+
+
+            <ul class="movies-list  has-scrollbar">
+
+                <li>
+                    <div class="movie-card">
+
+                        <a asp-controller="Movie" asp-action="Detail">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/3qkUzHe7MdNXfInMRtIogP8K82e.jpg" alt="Deadpool 2">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">Deadpool 2</h3>
+                            </a>
+
+                            <time datetime="2018">2018</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">HD</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT120M">120 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>7.5</data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="movie-card">
+
+                        <a href="./movie-details.html">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/3qkUzHe7MdNXfInMRtIogP8K82e.jpg"
+                                     alt="Doctor Strange in the Multiverse of Madness movie poster">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">Doctor Strange in the Multiverse of Madness</h3>
+                            </a>
+
+                            <time datetime="2022">2022</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">4K</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT126M">126 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>NR</data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="movie-card">
+
+                        <a href="./movie-details.html">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/3qkUzHe7MdNXfInMRtIogP8K82e.jpg" alt="X-MEN">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">X-Men: Phượng Hoàng Bóng Tối</h3>
+                            </a>
+
+                            <time datetime="2019">2019</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">2K</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT114M">114 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>9.8</data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="movie-card">
+
+                        <a href="./movie-details.html">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/3qkUzHe7MdNXfInMRtIogP8K82e.jpg"
+                                     alt="Thần sấm III: Tận Thế Ragnarok">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">Thần sấm III: Tận Thế Ragnarok</h3>
+                            </a>
+
+                            <time datetime="2017">2017</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">HD</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT170M">170 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>8,0<a href="#"></a></data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+   <br />
+        <div class="container">
+
+            <div class="flex-wrapper ">
+
+                <div class="title-wrapper">
+                    <p class=" h3 section-subtitle">Robert Downey Jr</p>
+
+                </div>
+
+                <div class="justify-content-end">
+                    <p class="h3 section-title">Xem thêm</p>
+                </div>
+
+
+            </div>
+
+
+            <ul class="movies-list  has-scrollbar">
+
+                <li>
+                    <div class="movie-card">
+
+                        <a asp-controller="Movie" asp-action="Detail">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/q9L8fMYW4dBQOdDAfbbxte7gciJ.jpg" alt="Deadpool 2">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">Deadpool 2</h3>
+                            </a>
+
+                            <time datetime="2018">2018</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">HD</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT120M">120 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>7.5</data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="movie-card">
+
+                        <a href="./movie-details.html">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/q9L8fMYW4dBQOdDAfbbxte7gciJ.jpgg"
+                                     alt="Doctor Strange in the Multiverse of Madness movie poster">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">Doctor Strange in the Multiverse of Madness</h3>
+                            </a>
+
+                            <time datetime="2022">2022</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">4K</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT126M">126 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>NR</data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="movie-card">
+
+                        <a href="./movie-details.html">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/q9L8fMYW4dBQOdDAfbbxte7gciJ.jpg" alt="X-MEN">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">X-Men: Phượng Hoàng Bóng Tối</h3>
+                            </a>
+
+                            <time datetime="2019">2019</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">2K</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT114M">114 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>9.8</data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="movie-card">
+
+                        <a href="./movie-details.html">
+                            <figure class="card-banner">
+                                <img src="https://image.tmdb.org/t/p/original/q9L8fMYW4dBQOdDAfbbxte7gciJ.jpg"
+                                     alt="Thần sấm III: Tận Thế Ragnarok">
+                            </figure>
+                        </a>
+
+                        <div class="title-wrapper">
+                            <a href="./movie-details.html">
+                                <h3 class="card-title">Thần sấm III: Tận Thế Ragnarok</h3>
+                            </a>
+
+                            <time datetime="2017">2017</time>
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="badge badge-outline">HD</div>
+
+                            <div class="duration">
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT170M">170 min</time>
+                            </div>
+
+                            <div class="rating">
+                                <ion-icon name="star"></ion-icon>
+
+                                <data>8,0<a href="#"></a></data>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+        </section>
+ </div>
