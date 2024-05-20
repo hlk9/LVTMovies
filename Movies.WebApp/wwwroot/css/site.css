@@ -390,13 +390,14 @@ body.active { overflow: hidden; }
 \*-----------------------------------*/
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   padding-block: 25px;
   transition: var(--transition-2);
   z-index: 4;
+  
 }
 
 .header.active {
@@ -1349,7 +1350,7 @@ body.active { overflow: hidden; }
    * HEADER
    */
 
-  .header.active { padding-block: 5px; }
+  /*.header.active { padding-block: 5px; }*/
 
   .menu-open-btn,
   .navbar-top,

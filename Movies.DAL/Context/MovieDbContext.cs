@@ -23,7 +23,7 @@ namespace Movies.DAL.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=LVTMovies;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source=XPK4\\SQLEXPRESS;Initial Catalog=LVTMovies;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;");
         }
 
         public DbSet<Models.Actor> Actors { get; set; }
