@@ -16,5 +16,10 @@ namespace Movies.WebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
     }
 }
