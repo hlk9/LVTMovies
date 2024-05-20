@@ -38,5 +38,9 @@ namespace Movies.WebApp.Controllers
             List<MovieGenre> movieGenres = new List<MovieGenre>();
             return View(movieGenres);
         }
+        public IActionResult ListOfMoviesByActors()
+        {
+            return View();
+        }
     }
 }
