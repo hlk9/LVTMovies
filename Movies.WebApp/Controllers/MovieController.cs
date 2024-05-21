@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Movies.DAL.Context;
 using Movies.DAL.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
@@ -8,10 +10,19 @@ namespace Movies.WebApp.Controllers
     public class MovieController : Controller
     {
         string baseURL = "https://localhost:7279/";
-
+        MovieDbContext _context;
+        public MovieController()
+        {
+            _context = new MovieDbContext();
+        }
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult WatchMovie()
+        {
+            var lstWatch = _context.Users.ToList();
+            return View(lstWatch);
         }
 
         public async Task<ActionResult> Detail(int id)
