@@ -44,5 +44,14 @@ namespace Movies.WebApp.Controllers
 
             return View(movie);
         }
+        public IActionResult ListOfMoviesGenres()
+        {
+            List<MovieGenre> movieGenres = new List<MovieGenre>();
+            return View(movieGenres);
+        }
+        public IActionResult ListOfMoviesByActors()
+        {
+            return View();
+        }
     }
 }
