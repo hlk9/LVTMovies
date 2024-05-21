@@ -53,5 +53,11 @@ namespace Movies.WebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult ListMovieManager()
+        {
+            var lst  = _context.Movies.ToList();
+            return View(lst);
+        }
     }
 }
