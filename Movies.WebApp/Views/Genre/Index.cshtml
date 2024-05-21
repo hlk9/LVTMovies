@@ -1,0 +1,94 @@
+﻿@using Movies.DAL.Models
+@model IEnumerable<Genre>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2 class="mt-4 mb-4 text-center">
+    Danh sách thể loại phim
+</h2>
+<div class="d-flex flex-column p-6">
+    <div class="mt-4 mb-4 d-flex justify-content-end">
+        <a class="btn btn-success">Thêm mới</a>
+    </div>
+    <div class="mt-4 mb-4 p-4">
+
+        <table class="table w-100 table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Tên
+                    </th>
+                    <th>
+                        Mô tả
+                    </th>
+                    <th>
+                        Trạng thái
+                    </th>
+                    <th>
+                        Thao tác
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @if (item.Status == 1)
+                            {
+                                <span class="badge bg-success">Hoạt động</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Ẩn</span>
+                            }
+                        </td>
+                        <td class="d-flex">
+                            <div>
+                                <a class="btn btn-warning">
+                                    Sửa
+                                </a>
+                            </div>
+                          
+
+                            @if(item.Status==255)
+                            {
+                                <div class="ms-2">
+                                    <a class="btn btn-success">
+                                        Hiện
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="ms-2">
+                                    <a class="btn btn-danger">
+                                        Ẩn
+                                    </a>
+                                </div>
+                            }
+
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
