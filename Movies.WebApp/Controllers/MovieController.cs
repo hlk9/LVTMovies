@@ -100,8 +100,7 @@ namespace Movies.WebApp.Controllers
                             MovieGenre newMovieGenre = new MovieGenre();
                             newMovieGenre.MovieID = (int)detailJson["id"];
                             newMovieGenre.GenreID = (int)genreItem["id"];
-                            _context.MovieGenres.Add(newMovieGenre);
-                          
+                            _context.MovieGenres.Add(newMovieGenre);                          
                         }
                         _context.SaveChanges();
                         return View(newMovie);
