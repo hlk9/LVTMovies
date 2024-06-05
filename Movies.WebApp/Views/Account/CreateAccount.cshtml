@@ -1,0 +1,68 @@
+﻿@model Movies.DAL.Models.User
+
+@{
+    ViewData["Title"] = "DetailsAccount";
+}
+
+
+
+<div class="container">
+    <h1 class="my-5 fw-bold text-center">Chi Tiết Tài Khoản</h1>
+    <form asp-action="CreateAccount" asp-controller="Account" method="post">
+        <div class="row">
+            <div class="col-6">
+                <label class="form-label fw-bold" asp-for="FullName">Họ Tên</label>
+                <input type="text" class="form-control" asp-for="FullName"/>
+            </div>
+            <div class="col-6">
+                <label class="form-label fw-bold" asp-for="Gender">Giới Tính</label>
+                <select class="form-select" asp-for="Gender">
+                    <option value="true">Nam</option>
+                    <option value="false">Nữ</option>
+                </select>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-4">
+                <label class="form-label fw-bold" asp-for="Email">Email</label>
+                <input type="text" class="form-control" asp-for="Email"/>
+            </div>
+            <div class="col-4">
+                <label class="form-label fw-bold" asp-for="Status">Trạng Thái</label>
+                <select class="form-select" asp-for="Status">
+                    <option value="1">Hoạt Động</option>
+                    <option value="255">Ngừng Hoạt Động</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label class="form-label fw-bold" asp-for="RoleId">Quyền</label>
+                <select class="form-select" asp-for="RoleId">
+                    <option value="1">Admin</option>
+                    <option value="2">Staff</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label class="form-label fw-bold" asp-for="UserName">Tên Tài Khoản</label>
+                <input type="text" class="form-control" asp-for="UserName"/>
+            </div>
+            <div class="col-6">
+                <label class="form-label fw-bold" asp-for="Password">Mật Khẩu</label>
+                <input type="text" class="form-control" asp-for="Password"/>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center my-5">
+            <input type="submit" value="Thêm Mới" class="btn btn-warning w-25 text-dark fw-bold"/>
+        </div>
+        
+    </form>
+
+    <div class="d-flex justify-content-center mb-5">
+        <a asp-controller="Account" asp-action="ListAccountManager" class="nav-link btn btn-secondary text-white fw-bold w-25">Quay Lại</a>
+    </div>
+</div>
+
+

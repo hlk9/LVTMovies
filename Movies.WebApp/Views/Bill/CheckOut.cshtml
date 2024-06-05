@@ -14,13 +14,13 @@
 
         <div class="mt-5">
             <div class="row">
-                <div class="col-6">
+                <div class="col">
                     <div class="shadow rounded-4 p-4">
                         <h5 class="text-uppercase text-start m-0 text-white" style="font-size: 18px">Thông Tin Thanh Toán</h5>
 
                         <div class="row my-3">
-                            <div class="col-5">
-                                <img src="https://tse2.mm.bing.net/th?id=OIP.q9I1OSQLVMMSAC_--U4-owHaKf&pid=Api&P=0&h=220" width="100%" alt="Alternate Text" />
+                            <div class="col-3">
+                                <img src="https://image.tmdb.org/t/p/original/lraHo9D8c0YWfxsKqT5P5sVqMKN.jpg" width="100%" alt="Alternate Text" />
                             </div>
 
                             <div class="col-7">
@@ -69,21 +69,11 @@
                             <span class="fw-bold  text-white">></span>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="col-5">
-                    <h5 class="text-uppercase text-start m-0 text-white fw-bold" style="font-size: 18px">Chọn Phương Thức Thanh Toán</h5>
-
-                    <div class="my-3">
-                        <img width="100%" src="~/Images/Screenshot 2024-05-20 163200.png" />
-                    </div>
-
-                    <div>
-                        <a class="btn w-100 rounded-pill fw-bold py-2" style="background-color: #e2d703">Thanh Toán</a>
+                    <div class="d-flex justify-content-center mt-5 mb-5">
+                        <a class="btn btn-warning" asp-action="GoToPayment" asp-controller="Bill">Thanh toán</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

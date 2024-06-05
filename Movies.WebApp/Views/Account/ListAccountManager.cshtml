@@ -1,11 +1,12 @@
-﻿@{
+﻿@model IEnumerable<Movies.DAL.Models.User>
+@{
     ViewData["Title"] = "List-Account";
 }
 <div class="container py-5">
     <h1 class="text-center text-uppercase">Danh Sách Tài Khoản</h1>
 
-    <div class="my-5">
-        <button class="btn btn-success"><a class="nav-link text-white">Thêm Mới Tài Khoản</a></button>
+    <div class="my-5 w-25">
+        <a class="nav-link text-white btn btn-success" asp-action="CreateAccount" asp-controller="Account">Thêm Mới Tài Khoản</a>
     </div>
 
     <div>
@@ -16,22 +17,43 @@
                     <th>Tên Tài Khoản</th>
                     <th>Email</th>
                     <th>Giới Tính</th>
+                    <th>Trạng Thái</th>
                     <th>Thao Tác</th>
                 </tr>
             </thead>
 
             <tbody class="text-center">
-                <tr>
-                    <td>Đặng Trần Xuân Bắc</td>
-                    <td>bacdtx</td>
-                    <td>bacdtxph31853@fpt.edu.vn</td>
-                    <td>Nam</td>
-                    <td>
-                        <a class="btn btn-primary">Chi Tiết</a>
-                        <a class="btn btn-warning">Sửa</a>
-                        <a class="btn btn-danger">Xóa</a>
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Email</td>
+                        <td>
+                            @if(item.Gender == true) {
+                                <span>Nam</span>
+                            }
+                            else {
+                                <span>Nữ</span>
+                            }
+                        </td>
+                        <td>
+                            @if(item.Status == 1)
+                            {
+                                <span class="text-success">Hoạt Động</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger"></span>
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Account" asp-action="DetailsAccount" asp-route-id="@item.Id">Chi Tiết</a>
+                            <a class="btn btn-warning">Sửa</a>
+                            <a class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

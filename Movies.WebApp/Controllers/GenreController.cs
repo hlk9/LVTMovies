@@ -12,6 +12,10 @@ namespace Movies.WebApp.Controllers
             IEnumerable<Genre> lst = _context.Genres.ToList();
             return View(lst);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
     }
 }

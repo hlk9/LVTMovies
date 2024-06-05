@@ -4,7 +4,7 @@ using Movies.DAL.Models;
 namespace Movies.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class MovieController : ControllerBase
     {
         [HttpGet(Name = "MovieDetail")]
