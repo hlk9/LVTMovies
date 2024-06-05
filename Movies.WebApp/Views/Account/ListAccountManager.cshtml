@@ -49,8 +49,8 @@
                         </td>
                         <td>
                             <a class="btn btn-primary" asp-controller="Account" asp-action="DetailsAccount" asp-route-id="@item.Id">Chi Tiết</a>
-                            <a class="btn btn-warning">Sửa</a>
-                            <a class="btn btn-danger">Xóa</a>
+                            <a class="btn btn-warning" asp-controller="Account" asp-action="UpdateAccount" asp-route-id="@item.Id">Sửa</a>
+                            <a class="btn btn-danger" asp-controller="Account" asp-action="DeleteAccount" asp-route-id="@item.Id">Xóa</a>
                         </td>
                     </tr>
                 }
