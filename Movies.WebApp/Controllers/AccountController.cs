@@ -1,42 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.WebApp.Services;
 using Newtonsoft.Json;
 
 namespace Movies.WebApp.Controllers
 {
     public class AccountController : Controller
     {
-        MovieDbContext _context;
-
-        HttpClient _httpClient;
+        AssetServices _serAss;
 
         public AccountController()
         {
-            _context = new MovieDbContext();  
-            _httpClient = new HttpClient();
+            _serAss = new AssetServices();
         }
 
         public IActionResult ListAccountManager()
         {
-            string requestUrl = "https://localhost:7279/api/User/GetAllUser";
-            var response =  _httpClient.GetStringAsync(requestUrl).Result;
-            List<User> lstUsers = JsonConvert.DeserializeObject<List<User>>(response);
-
+            var lstUsers = _serAss.GetAll();
             return View(lstUsers);
         }
 
         public IActionResult ListOfRentedMovies()
         {
-            var lstRented = _context.Users.ToList();
-            return View(lstRented);
+            return View();
         }
 
         public IActionResult DetailsAccount(Guid id)
         {
-            string requestUrl = $"https://localhost:7279/api/User/GetUserById?id={id}";
-            var response = _httpClient.GetStringAsync(requestUrl).Result;
-            User User = JsonConvert.DeserializeObject<User>(response);
+            var User = _serAss.GetById(id); 
 
             return View(User);
         }
@@ -49,9 +41,26 @@ namespace Movies.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateAccount(User user)
         {
-            string requestUrl = "https://localhost:7279/api/User/CreateUser";
-            var response = _httpClient.PostAsJsonAsync(requestUrl, user).Result;
-            ViewData["result"]= response;
+            _serAss.CreateUser(user);
+            return RedirectToAction("ListAccountManager");
+        }
+
+        public IActionResult UpdateAccount(Guid id)
+        {
+            var User = _serAss.GetById(id);
+            return View(User);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateAccount(User user)
+        {
+            _serAss.UpdateUser(user);
+            return RedirectToAction("ListAccountManager");
+        }
+
+        public IActionResult DeleteAccount(Guid id)
+        {
+            _serAss.DeleteUser(id);
             return RedirectToAction("ListAccountManager");
         }
     }
