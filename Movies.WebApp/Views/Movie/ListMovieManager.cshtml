@@ -123,10 +123,10 @@
                         <div class="movie-description">
                             <p class="modal-deltail-des">Tony Stark tự hé lộ thân phận Người sắt của mình cho công chúng và chìm trong hào quang danh vọng. Một kẻ lạ mặt xuất hiện tấn công anh trên đường đua Monte Carlo. Tony bị hiện tượng nhiễm trùng máu đe dọa mạng sống, còn tên sát thủ kia bắt tay với đối thủ của tập đoàn Stark hòng thôn tính Tony.  Phần 2 của Người sắt là lần đầu tiên trợ thủ Warmachine xuất hiện. Phim cũng tiết lộ những bí mật về cha của Tony, Howard Stark, trước khi dẫn dắt câu chuyện sang nhân vật Captain America, đồng đội tương lai của Người sắt tại tổ chức SHIELD.</p>
                         </div>
-                        <div><strong>Thể loại:</strong> <p class="modal-deltail-genre">Action</p></div>
-                        <div><strong>Độ dài:</strong><p class="modal-deltail-duration"></p></div>
-                        <div><strong>Kinh phí:</strong> <p class="modal-deltail-bud">100000</p> USD</div>
-                        <div><strong>Giá thuê:</strong> <p class="modal-deltail-price"> 59000</p>  VND</div>
+                        <div class=" d-flex flex-row"><strong>Thể loại:</strong> <p class="modal-deltail-genre">Action</p></div>
+                        <div class=" d-flex flex-row"><strong>Độ dài:</strong><p class="modal-deltail-duration"></p></div>
+                        <div class=" d-flex flex-row"><strong>Kinh phí:</strong> <p class="modal-deltail-bud">100000</p> USD</div>
+                        <div class=" d-flex flex-row"><strong>Giá thuê:</strong> <p class="modal-deltail-price"> 59000</p>  VND</div>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,9 @@
 
 <script>
     function GetDetail(id) {
-        console.log(id);
-        var obj = fetch()
+        var base = "https://localhost:7279/"
+
+        fetch(base + "Movie?id=" + id).then(       
+        )
     }
 </script>
