@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Movies.DAL.Models.Movie>
+
+@{
+    ViewData["Title"] = "ListMovieManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-4 mb-4 text-center">
+    Danh sách Phim
+</h2>
+<div class="m-5 p-6">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                @*  <th style="min-width:200px">
+                @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.StreamURL)
+                </th> *@
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalePrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                @*   <th>
+                @Html.DisplayNameFor(model => model.Bugget)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.BackdropURL)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.PosterURL)
+                </th> *@
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    @*  <td>
+                <div class="overflow-scroll" style="max-height:100px">
+                @Html.DisplayFor(modelItem => item.Description)
+                </div>
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.StreamURL)
+                </td> *@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RentalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    @*  <td>
+                @Html.DisplayFor(modelItem => item.Bugget)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.BackdropURL)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.PosterURL)
+                </td> *@
+                    <td>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div>
+                                <a class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movieModal" onclick="GetDetail(@item.Id)">Chi tiết</a>
+                            </div>
+                            <div>
+                                <a class="btn btn-warning">Sửa</a>
+                            </div>
+                            <div>
+                                <a class="btn btn-danger">Xoá</a>
+                            </div>
+                        </div>
+                        @*    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieModalLabel">Chi tiết phim</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="https://image.tmdb.org/t/p/original/q9L8fMYW4dBQOdDAfbbxte7gciJ.jpg" class="img-fluid movie-poster" alt="Poster">
+                    </div>
+                    <div class="col-md-6 movie-details">
+                        <h4 class="modal-deltail-title">Người Kim loại 2</h4>
+                        <div class="movie-description">
+                            <p class="modal-deltail-des">Tony Stark tự hé lộ thân phận Người sắt của mình cho công chúng và chìm trong hào quang danh vọng. Một kẻ lạ mặt xuất hiện tấn công anh trên đường đua Monte Carlo. Tony bị hiện tượng nhiễm trùng máu đe dọa mạng sống, còn tên sát thủ kia bắt tay với đối thủ của tập đoàn Stark hòng thôn tính Tony.  Phần 2 của Người sắt là lần đầu tiên trợ thủ Warmachine xuất hiện. Phim cũng tiết lộ những bí mật về cha của Tony, Howard Stark, trước khi dẫn dắt câu chuyện sang nhân vật Captain America, đồng đội tương lai của Người sắt tại tổ chức SHIELD.</p>
+                        </div>
+                        <div class=" d-flex flex-row"><strong>Thể loại:</strong> <p class="modal-deltail-genre">Action</p></div>
+                        <div class=" d-flex flex-row"><strong>Độ dài:</strong><p class="modal-deltail-duration"></p></div>
+                        <div class=" d-flex flex-row"><strong>Kinh phí:</strong> <p class="modal-deltail-bud">100000</p> USD</div>
+                        <div class=" d-flex flex-row"><strong>Giá thuê:</strong> <p class="modal-deltail-price"> 59000</p>  VND</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                @* <button type="button" class="btn btn-primary">Đóng</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function GetDetail(id) {
+        var base = "https://localhost:7279/"
+
+        fetch(base + "Movie?id=" + id).then(       
+        )
+    }
+</script>
