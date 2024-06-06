@@ -13,5 +13,14 @@ namespace Movies.API.Controllers
             var context = new DAL.Context.MovieDbContext();
            return  context.Movies.Find(id);
         }
+
+        [HttpGet("Get-All-Movies")]
+        public List<Movie> GetAllMovies()
+        {
+            var context = new DAL.Context.MovieDbContext();
+            var list = new List<Movie>();
+            list = context.Movies.ToList();
+            return list;
+        }
     }
 }
