@@ -22,5 +22,5 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=ListAccountManager}/{id?}");
+    pattern: "{controller=Account}/{action=ListOfRentedMovies}/{id?}");
 app.Run();
