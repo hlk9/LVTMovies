@@ -14,10 +14,12 @@ namespace Movies.DAL.Models
         public int Id { get; set; }
         public Guid UserID { get; set; }
         [ForeignKey("UserID")] 
-        public virtual User User { get; set; }
-        public int RentalID { get; set; }
+        public virtual User? User { get; set; }
+
         [ForeignKey("RentalID")]
-        public virtual Rental Rental { get; set; }
+        public int RentalID { get; set; }
+        
+        public virtual Rental? Rental { get; set; }
         public double Amount { get; set; }
         public DateTime PaymentDate { get; set; }
         public byte Status { get; set; }
