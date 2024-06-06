@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace Movies.WebApp.Controllers
 {
@@ -115,10 +116,13 @@ namespace Movies.WebApp.Controllers
 
 
         }
-        public IActionResult ListOfMoviesGenres()
+        public async Task< ActionResult> ListOfMoviesGenres()
         {
-            List<MovieGenre> movieGenres = new List<MovieGenre>();
-            return View(movieGenres);
+            HttpClient client = new HttpClient();
+            string requestURL = @"https://localhost:7279/api/Movie/get-movie-by-genre";
+            var response = await client.GetStringAsync(requestURL);
+            List<Movie> result = JsonConvert.DeserializeObject<List<Movie>>(response);
+            return View(result);
         }
         public IActionResult ListOfMoviesByActors()
         {
