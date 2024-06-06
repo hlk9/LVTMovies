@@ -1,5 +1,6 @@
 ﻿using Azure;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModels;
 using Newtonsoft.Json;
 
 namespace Movies.WebApp.Services
@@ -11,7 +12,6 @@ namespace Movies.WebApp.Services
         {
             _httpClient = new HttpClient();
         }
-
         public List<User> GetAll()
         {
             string requestUrl = "https://localhost:7279/api/User/GetAllUser";
@@ -60,6 +60,14 @@ namespace Movies.WebApp.Services
                 return true;
             }
             return false;
+        }
+
+        public List<RentalDetail> GellAllRental()
+        {
+            string requestUrl = $"https://localhost:7279/api/User/list_rented";
+            var respone = _httpClient.GetStringAsync(requestUrl).Result;
+            List<RentalDetail> lstRantal = JsonConvert.DeserializeObject<List<RentalDetail>>(respone);
+            return lstRantal;
         }
     }
 }

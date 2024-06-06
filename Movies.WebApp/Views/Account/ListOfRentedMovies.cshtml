@@ -1,8 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<Movies.DAL.ViewModels.RentalDetail>
+
+
 <div style="background-color: #1f2229">
     <div class="container" style="color: white">
         <h1 style="text-align: center; margin-bottom: 30px;">Danh Sách Phim Đã Thuê</h1>
@@ -13,145 +11,30 @@
                     <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Tên Phim</th>
                     <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Trạng Thái</th>
                     <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Tổng tiền</th>
-                    <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Ngày Mua</th>
+                    <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Ngày Thuê</th>
                     <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Ngày Hết Hạn</th>
                     <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: #262626; color: #bbb; text-transform: uppercase; font-size: 14px;">Thao Tác</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">875392</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">Quật Mộ Trùng Ma</td>
-                    <td class="success" style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">Thuê Thành Công</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">45.000</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">15/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">16/5/2024</td>
-                    <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                        <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
-                        <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.PaymentId</td>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.MovieTitle</td>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f; background-color: rgba(154, 230, 180, 0.16); color: #5cb85c; font-weight: bold;">
+                            @(item.RentalStatus == 1 ? "Thuê Thành Công" : "Thất Bại")
+                        </td>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.PaymentAmount.ToString("C0")</td>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.RentalDate.ToString("dd/MM/yyyy")</td>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.ReturnDate.ToString("dd/MM/yyyy")</td>
+                        <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
+                            <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
+                            <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
+                        </td>
+                    </tr>
+                }
             </tbody>
-        </table>
         </table>
     </div>
 </div>
