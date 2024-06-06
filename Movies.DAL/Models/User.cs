@@ -21,10 +21,10 @@ namespace Movies.DAL.Models
 
         [ForeignKey("RoleId")]
         public int RoleId { get; set; }
-        public virtual ICollection<Rental> Rentals { get; set; }
-        public virtual ICollection<WhishList> WhishLists { get; set; }
-        public virtual ICollection<Payment> Payments { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual ICollection<Rental>? Rentals { get; set; }
+        public virtual ICollection<WhishList>? WhishLists { get; set; }
+        public virtual ICollection<Payment>? Payments { get; set; }
+        public virtual Role? Role { get; set; }
 
     }
 }
