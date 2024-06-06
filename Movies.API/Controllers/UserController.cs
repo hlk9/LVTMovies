@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
 
@@ -78,5 +79,26 @@ namespace Movies.API.Controllers
                 return BadRequest("Xóa thất bại");
             }
         }
+
+        [HttpGet("list_rented")]
+        public async Task<ActionResult> ListOfRentedMovies()
+        {
+            var query = from a in _context.Payments
+                        join b in _context.Rentals on a.RentalID equals b.Id
+                        join c in _context.Movies on b.MovieID equals c.Id
+                        select new
+                        {
+                            PaymentId = a.Id,
+                            MovieTitle = c.Title,
+                            RentalStatus = b.Status,
+                            PaymentAmount = a.Amount,
+                            RentalDate = b.RentalDate,
+                            ReturnDate = b.ReturnDate
+                        };
+
+            var resultList = await query.ToListAsync();
+            return Ok(resultList);
+        }
+
     }
 }
