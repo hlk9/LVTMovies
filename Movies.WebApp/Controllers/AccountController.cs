@@ -23,7 +23,8 @@ namespace Movies.WebApp.Controllers
 
         public IActionResult ListOfRentedMovies()
         {
-            return View();
+            var lstRental = _serAss.GellAllRental();
+            return View(lstRental);
         }
 
         public IActionResult DetailsAccount(Guid id)
