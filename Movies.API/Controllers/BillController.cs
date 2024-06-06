@@ -38,21 +38,5 @@ namespace Movies.API.Controllers
                 return BadRequest();
             }
         }
-
-        public ActionResult Delete(int id)
-        {
-            try
-            {
-                var obj = _context.Payments.Find(id);
-
-                _context.Payments.Remove(obj);
-                _context.SaveChanges();
-                return Ok();
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
     }
 }
