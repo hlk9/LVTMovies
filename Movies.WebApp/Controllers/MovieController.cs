@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.WebApp.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -12,11 +13,13 @@ namespace Movies.WebApp.Controllers
 {
     public class MovieController : Controller
     {
+        MovieServices _movieServices;
         string baseURL = "https://localhost:7279/";
         MovieDbContext _context;
         public MovieController()
         {
             _context = new MovieDbContext();
+            _movieServices = new MovieServices();
         }
         public IActionResult Index()
         {
@@ -131,7 +134,7 @@ namespace Movies.WebApp.Controllers
 
         public IActionResult ListMovieManager()
         {
-            var lst = _context.Movies.ToList();
+            var lst = _movieServices.GetAllMovies();
             return View(lst);
         }
     }
