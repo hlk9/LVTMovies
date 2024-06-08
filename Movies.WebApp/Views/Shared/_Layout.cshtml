@@ -71,33 +71,15 @@
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link text-decoration-none">Phim</a>
+                        <a asp-action="ListOfMoviesGenres" asp-controller="Movie" class="navbar-link text-decoration-none">Phim</a>
                     </li>
 
                     <li>
                         <a href="#" class="navbar-link text-decoration-none">Truyền hình</a>
                     </li>
+
                     <li>
                         <a href="#" class="navbar-link text-decoration-none">Quốc Gia</a>
-                    </li>
-
-                    <li class="position-relative">
-                        <a href="#" class="navbar-link text-decoration-none">Thể loại</a>
-                      
-                        <div class="genre-dropdown position-fixed z-3 border-1 bg-dark bg-opacity-75 rounded-3 text-light shadow-sm" style="background-color: #1f2229">
-                            <ul>
-                                <li class="genre">Hành động</li>
-                                <li class="genre">Hài hước</li>
-                                <li class="genre">Tình cảm</li>
-                                <li class="genre">Kinh dị</li>
-                                <li class="genre">Khoa học viễn tưởng</li>
-                                <li class="genre">Hồi hộp</li>
-                                <li class="genre">Lãng mạn</li>
-                                <li class="genre">Huyền bí</li>
-                                <li class="genre">Phiêu lưu</li>
-                                <li class="genre">Hoạt hình</li>
-                            </ul>
-                        </div>
                     </li>
 
                     <li>
@@ -258,6 +240,8 @@
         </div>
 
     </footer>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

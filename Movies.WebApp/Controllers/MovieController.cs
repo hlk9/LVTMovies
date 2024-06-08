@@ -2,11 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModels;
 using Movies.WebApp.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace Movies.WebApp.Controllers
 {
@@ -39,7 +41,7 @@ namespace Movies.WebApp.Controllers
                 client.BaseAddress = new Uri(baseURL);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage res = await client.GetAsync("api/Movie?id=" + id);
+                HttpResponseMessage res = await client.GetAsync("Movie?id=" + id);
                 if (res.IsSuccessStatusCode)
                 {
                     var moviesRes = res.Content.ReadAsStringAsync().Result;
@@ -118,10 +120,25 @@ namespace Movies.WebApp.Controllers
 
 
         }
-        public IActionResult ListOfMoviesGenres()
+        public   IActionResult ListOfMoviesGenres(int id)
         {
-            List<MovieGenre> movieGenres = new List<MovieGenre>();
-            return View(movieGenres);
+            
+            var lst = _movieServices.GetAllMoviesByGenreId(id);
+            ViewBag.lstGenre = new List<Genre>();
+            foreach (var item in _context.Genres.ToList())
+            {
+                ViewBag.lstGenre.Add(item);
+            }
+            if(id == 0)
+            {
+                var lstNull =  _context.Movies.ToList();
+                return View(lstNull);
+            }
+            else
+            {
+
+            return View(lst);
+            }
         }
         public IActionResult ListOfMoviesByActors()
         {
