@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModels;
 using Movies.WebApp.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -40,7 +41,7 @@ namespace Movies.WebApp.Controllers
                 client.BaseAddress = new Uri(baseURL);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage res = await client.GetAsync("api/Movie?id=" + id);
+                HttpResponseMessage res = await client.GetAsync("Movie?id=" + id);
                 if (res.IsSuccessStatusCode)
                 {
                     var moviesRes = res.Content.ReadAsStringAsync().Result;
@@ -119,13 +120,25 @@ namespace Movies.WebApp.Controllers
 
 
         }
-        public async Task< ActionResult> ListOfMoviesGenres()
+        public   IActionResult ListOfMoviesGenres(int id)
         {
-            HttpClient client = new HttpClient();
-            string requestURL = @"https://localhost:7279/api/Movie/get-movie-by-genre";
-            var response = await client.GetStringAsync(requestURL);
-            List<Movie> result = JsonConvert.DeserializeObject<List<Movie>>(response);
-            return View(result);
+            
+            var lst = _movieServices.GetAllMoviesByGenreId(id);
+            ViewBag.lstGenre = new List<Genre>();
+            foreach (var item in _context.Genres.ToList())
+            {
+                ViewBag.lstGenre.Add(item);
+            }
+            if(id == 0)
+            {
+                var lstNull =  _context.Movies.ToList();
+                return View(lstNull);
+            }
+            else
+            {
+
+            return View(lst);
+            }
         }
         public IActionResult ListOfMoviesByActors()
         {

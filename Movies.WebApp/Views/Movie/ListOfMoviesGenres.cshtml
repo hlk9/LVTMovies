@@ -3,87 +3,38 @@
 @{
     ViewData["Title"] = "ListOfMoviesGenres";
 }
+<div style="background-color: #110f1a">
 
-<h1>ListOfMoviesGenres</h1>
+    <h1 class="py-5 text-center">Danh Sách Phim</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StreamURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SalePrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bugget)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BackdropURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PosterURL)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StreamURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SalePrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bugget)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BackdropURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PosterURL)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="mb-5">
+        <div class="dropdown w-75">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Thể Loại
+            </button>
+            <ul class="dropdown-menu">
+
+                @foreach (var item in ViewBag.lstGenre)
+                {
+
+                    <li class="dropdown-item"><a asp-action="ListOfMoviesGenres" asp-controller="Movie" asp-route-id="@item.Id">@item.Name</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <a asp-action="Detail" asp-controller="Movie" asp-asp-route-id="@item.Id" class="col-3 mb-5">
+                    <img width="100%" src="@item.PosterURL" />
+
+                </a>
+            }
+
+        </div>
+    </div>
+</div>
