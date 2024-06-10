@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "ListOfMoviesGenres";
 }
-<div style="background-color: #110f1a">
+<div style="background-color: #110f1a ;font-family:.VnArial">
 
-    <h1 class="py-5 text-center">Danh Sách Phim</h1>
+    <h1 class="py-5 text-center text-white text-uppercase">Danh Sách Phim</h1>
 
-    <div class="mb-5">
+    <div class="mb-5 ps-5">
         <div class="dropdown w-75">
             <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Thể Loại
@@ -31,8 +31,11 @@
 
                 <a asp-action="Detail" asp-controller="Movie" asp-asp-route-id="@item.Id" class="col-3 mb-5">
                     <img width="100%" src="@item.PosterURL" />
-
+                    <h6 class="nav-link text-white pt-3">@item.Title</h6>
+                    
                 </a>
+                
+               
             }
 
         </div>
