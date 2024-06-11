@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject IHttpContextAccessor context;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,8 +48,53 @@
                     </select>
                 </div>
 
-                <a asp-controller="Asset" asp-action="Login"> <button class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid #e2d703">Đăng nhập</button> </a>
 
+                @if (context.HttpContext.Session.GetString("username") != null)
+                {
+                    <li class="nav-item mx-2">
+                        <button class="btn text-light fw-bold rounded-pill px-4 py-2 dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: 2px solid #e2d703">
+                            <i class="bi bi-person-circle"></i>
+                            @context.HttpContext.Session.GetString("username")
+                        </button>
+                        @if (context.HttpContext.Session.GetString("Role") == "Admin")
+                        {
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Quản Lý</a></li>
+                                <li><a class="dropdown-item" href="#">Đơn Mua</a></li>
+                                <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
+                            </ul>
+                        }
+                        else if (context.HttpContext.Session.GetString("Role") == "Customer")
+                        {
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Thông Tin Chi Tiết</a></li>
+                                <li><a class="dropdown-item" href="#">Đơn Mua</a></li>
+                                <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
+                            </ul>
+
+                        }
+
+                    </li>
+
+                    @* <li class="nav-item mx-2">
+                <a asp-controller="Asset" asp-action="Logout" >
+                <button type="button" class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid red">
+                Đăng Xuất
+                </button>
+                </a>
+                </li> *@
+                }
+                else
+                {
+                    <li class="nav-item mx-2">
+                        <a asp-controller="Asset" asp-action="Login">
+                            <button class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid #e2d703">
+                                Đăng nhập
+                            </button>
+                        </a>
+
+                    </li>
+                }
 
             </div>
 

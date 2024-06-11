@@ -1,17 +1,25 @@
 ﻿using Azure;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.IdentityModel.Tokens;
+using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModel;
 using Movies.DAL.ViewModels;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Movies.WebApp.Services
 {
     public class AssetServices
     {
         HttpClient _httpClient;
+        
         public AssetServices()
         {
             _httpClient = new HttpClient();
         }
+
+        
         public List<User> GetAll()
         {
             string requestUrl = "https://localhost:7279/api/User/GetAllUser";
@@ -69,5 +77,40 @@ namespace Movies.WebApp.Services
             List<RentalDetail> lstRantal = JsonConvert.DeserializeObject<List<RentalDetail>>(respone);
             return lstRantal;
         }
+
+       public bool Login(LoginViewModels lvm)
+        {
+            string requestUrl = $"https://localhost:7279/api/Asset/Login";
+            var response = _httpClient.PostAsJsonAsync(requestUrl,lvm).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+           
+            
+        }
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
 }
+
+
+
+
+

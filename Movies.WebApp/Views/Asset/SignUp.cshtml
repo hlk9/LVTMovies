@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model Movies.DAL.Models.User
+
+@{
+    ViewData["Title"] = "SignUp";
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Bootstrap CSS -->
@@ -40,22 +47,22 @@
             border-color: hsl(57.04deg 97.38% 44.9%);
         }
 
-        /* Độ to vừa đủ cho các dòng trong form */
+       
         .form-group {
             width: 100%;
             margin-bottom: 20px;
         }
 
-        /* Các nút ra giữa */
+        /
         .btn-block {
             display: block;
-            width: 50%; /* hoặc số % bạn muốn */
+            width: 50%; 
             margin: 0 auto;
         }
 
-        /* Làm cho ô input lớn hơn theo chiều dọc */
+       
         .form-control {
-            height: 50px; /* hoặc số px bạn muốn */
+            height: 50px; 
         }
     </style>
 </head>
@@ -65,37 +72,38 @@
             <div class="col-12 col-md-8 col-lg-6">
                 <form method="post" class="form-container" asp-controller="Asset" asp-action="SignUp">
                     <!-- FullName Input -->
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label for="fullName">Họ và tên</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Họ và tên" name="fullName">
+                        <label asp-for="FullName">Họ và tên</label>
+                        <input type="text" class="form-control" id="FullName" placeholder="Họ và tên" name="FullName">
                     </div>
                     <!-- Email Input -->
                     <div class="form-group">
-                        <label for="email">Địa chỉ Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Địa chỉ Email" name="email">
+                        <label asp-for="Email">Địa chỉ Email</label>
+                        <input type="email" class="form-control" id="Email" placeholder="Địa chỉ Email" name="Email">
                     </div>
                     <!-- UserName Input -->
                     <div class="form-group">
-                        <label for="userName">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="userName" placeholder="Tên đăng nhập" name="userName">
+                        <label asp-for="UserName">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="UserName" placeholder="Tên đăng nhập" name="UserName">
                     </div>
                     <!-- Password Input -->
                     <div class="form-group">
-                        <label for="password">Mật khẩu</label>
-                        <input type="password" class="form-control" id="password" placeholder="Mật khẩu" name="password">
+                        <label asp-for="Password">Mật khẩu</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Mật khẩu" name="Password">
                     </div>
-                   
+
                     <!-- Gender Input -->
                     <div class="form-group">
-                        <label for="gender">Giới tính</label>
-                        <select class="form-control " id="gender" name="gender" style="background-color:white" >
+                        <label asp-for="Gender">Giới tính</label>
+                        <select class="form-control " id="Gender" name="Gender" style="background-color:white">
                             <option value="1">Nam</option>
                             <option value="0">Nữ</option>
-                            
+
                         </select>
                     </div>
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary btn-block" >Đăng ký</button>
+                    <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
                     <!-- Login Link -->
                     <div class="text-center mt-3">
                         Đã có tài khoản? <a asp-controller="Asset" asp-action="Login">Đăng nhập</a>
@@ -110,3 +118,9 @@
     <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
