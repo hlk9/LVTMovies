@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject IHttpContextAccessor context;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,8 +43,44 @@
                     </select>
                 </div>
 
-                <a asp-controller="Asset" asp-action="Login"> <button class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid #e2d703">Đăng nhập</button> </a>
                 
+                @if (context.HttpContext.Session.GetString("username") != null)
+                {
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-primary">
+                            <i class="bi bi-person-circle"></i>
+                            @if (context.HttpContext.Session.GetString("Role") == "Admin")
+                            {
+
+                                @context.HttpContext.Session.GetString("username")
+                            }
+                            else if (context.HttpContext.Session.GetString("Role") == "Khách Hàng")
+                            {
+
+                                @context.HttpContext.Session.GetString("username")
+                            }
+                        </button>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a asp-controller="Asset" asp-action="Logout" >
+                            <button type="button" class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid red">
+                                Đăng Xuất
+                            </button>
+                        </a>
+                    </li>
+                }else
+                {
+                    <li class="nav-item mx-2">
+                        <a
+                            asp-controller="Asset" asp-action="Login">
+                            <button class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid #e2d703">
+                                Đăng nhập
+                            </button>
+                        </a>
+
+                    </li>
+                }
 
             </div>
 
