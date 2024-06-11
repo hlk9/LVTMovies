@@ -9,7 +9,7 @@
     <title>The LVT - Kho phim chất lượng của bạn</title>
     <link rel="shortcut icon" href="~/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="~/css/site.css">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,41 +39,50 @@
                     <select name="language" id="language">
                         <option value="vi">VN</option>
                         <option value="en">EN</option>
-                        
+
                     </select>
                 </div>
 
-                
+
                 @if (context.HttpContext.Session.GetString("username") != null)
                 {
                     <li class="nav-item mx-2">
-                        <button class="btn btn-primary">
+                        <button class="btn text-light fw-bold rounded-pill px-4 py-2 dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: 2px solid #e2d703">
                             <i class="bi bi-person-circle"></i>
-                            @if (context.HttpContext.Session.GetString("Role") == "Admin")
-                            {
-
-                                @context.HttpContext.Session.GetString("username")
-                            }
-                            else if (context.HttpContext.Session.GetString("Role") == "Khách Hàng")
-                            {
-
-                                @context.HttpContext.Session.GetString("username")
-                            }
+                            @context.HttpContext.Session.GetString("username")
                         </button>
+                        @if (context.HttpContext.Session.GetString("Role") == "Admin")
+                        {
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Quản Lý</a></li>
+                                <li><a class="dropdown-item" href="#">Đơn Mua</a></li>
+                                <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
+                            </ul>
+                        }
+                        else if (context.HttpContext.Session.GetString("Role") == "Customer")
+                        {
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Thông Tin Chi Tiết</a></li>
+                                <li><a class="dropdown-item" href="#">Đơn Mua</a></li>
+                                <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
+                            </ul>
+
+                        }
+
                     </li>
 
-                    <li class="nav-item mx-2">
-                        <a asp-controller="Asset" asp-action="Logout" >
-                            <button type="button" class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid red">
-                                Đăng Xuất
-                            </button>
-                        </a>
-                    </li>
-                }else
+                    @* <li class="nav-item mx-2">
+                <a asp-controller="Asset" asp-action="Logout" >
+                <button type="button" class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid red">
+                Đăng Xuất
+                </button>
+                </a>
+                </li> *@
+                }
+                else
                 {
                     <li class="nav-item mx-2">
-                        <a
-                            asp-controller="Asset" asp-action="Login">
+                        <a asp-controller="Asset" asp-action="Login">
                             <button class="btn text-white fw-bold rounded-pill px-4 py-2" style="border: 2px solid #e2d703">
                                 Đăng nhập
                             </button>
@@ -268,7 +277,7 @@
                 </p>
 
                 <img src="~/assets/images/footer-bottom-img.png" alt="Online banking companies logo"
-                    class="footer-bottom-img">
+                     class="footer-bottom-img">
 
             </div>
         </div>
@@ -279,7 +288,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
+
 
     <a href="#top" class="go-top" data-go-top>
         <ion-icon name="chevron-up"></ion-icon>
