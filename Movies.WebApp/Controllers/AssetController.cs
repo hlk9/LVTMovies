@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModel;
 using Movies.WebApp.Services;
 
 namespace Movies.WebApp.Controllers
@@ -9,7 +10,7 @@ namespace Movies.WebApp.Controllers
     public class AssetController : Controller
     {
         MovieDbContext _context = new MovieDbContext();
-        AssetServices _serAss;
+        AssetServices _serAss = new AssetServices();
         public IActionResult Index()
         {
             return View();
@@ -23,26 +24,42 @@ namespace Movies.WebApp.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            if (username == null && password == null)
+            //if (username == null && password == null)
+            //{
+            //    return View();
+            //}
+            //else
+            //{
+            //    var acc = _context.Users.FirstOrDefault(p => p.UserName == username && p.Password == password);
+            //    if (acc == null) return Content("Tài khoản ko tồn tại");
+            //    else
+            //    {
+            //        TempData["acc"] = username;
+
+            //        HttpContext.Session.SetString("username",  acc.UserName.ToString()); // Lưu username vào session
+            //        HttpContext.Session.SetString("id", acc.Id.ToString());
+            //        var role = _context.Roles.FirstOrDefault(x => x.Id == acc.RoleId)?.Name;
+            //        HttpContext.Session.SetString("Role", role);
+
+            //        return RedirectToAction("Index","Home");
+            //    }
+            //}
+
+
+            var a = new LoginViewModels();
+            a.UserName = username;
+            a.Password = password;
+            // goij service 
+            
+            if(_serAss.Login(a) == true)
             {
-                return View();
+                return RedirectToAction("Index","Home");
             }
             else
             {
-                var acc = _context.Users.FirstOrDefault(p => p.UserName == username && p.Password == password);
-                if (acc == null) return Content("Tài khoản ko tồn tại");
-                else
-                {
-                    TempData["acc"] = username;
-
-                    HttpContext.Session.SetString("username",  acc.UserName.ToString()); // Lưu username vào session
-                    HttpContext.Session.SetString("id", acc.Id.ToString());
-                    var role = _context.Roles.FirstOrDefault(x => x.Id == acc.RoleId)?.Name;
-                    HttpContext.Session.SetString("Role", role);
-
-                    return RedirectToAction("Index","Home");
-                }
+                return BadRequest();
             }
+
         }
 
 
