@@ -32,7 +32,7 @@ namespace Movies.DAL.Models
         [Column(TypeName = "NVARCHAR")]
         [StringLength(30)]
         [DisplayName("Trạng thái")]
-        public string Status { get; set; }
+        public string? Status { get; set; }
         [DisplayName("Kinh phí")]
         public double Bugget { get; set; }
         [DisplayName("Ảnh nền")]
@@ -41,10 +41,10 @@ namespace Movies.DAL.Models
         public string PosterURL { get; set; }
 
 
-        public virtual ICollection<MovieGenre> MovieGenres { get; set; }
-        public virtual ICollection<WhishList> WhishLists { get; set; }
-        public virtual ICollection<MovieActor> MovieActors { get; set; }
-        public virtual ICollection<Rental> Rentals { get; set; }
+        public virtual ICollection<MovieGenre>? MovieGenres { get; set; }
+        public virtual ICollection<WhishList>? WhishLists { get; set; }
+        public virtual ICollection<MovieActor>? MovieActors { get; set; }
+        public virtual ICollection<Rental>? Rentals { get; set; }
 
     }
 }

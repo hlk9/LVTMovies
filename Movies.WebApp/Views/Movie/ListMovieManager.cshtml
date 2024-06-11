@@ -8,99 +8,104 @@
 <h2 class="mt-4 mb-4 text-center">
     Danh sách Phim
 </h2>
+<div>
+    <a class="btn btn-primary" asp-action="CreateMovie" asp-controller="Movie" >Thêm phim</a>
+</div>
 <div class="m-5 p-6">
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                @*  <th style="min-width:200px">
-                @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.StreamURL)
-                </th> *@
-                <th>
-                    @Html.DisplayNameFor(model => model.RentalPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SalePrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                @*   <th>
-                @Html.DisplayNameFor(model => model.Bugget)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.BackdropURL)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.PosterURL)
-                </th> *@
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="overflow-auto">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    @*  <td>
-                <div class="overflow-scroll" style="max-height:100px">
-                @Html.DisplayFor(modelItem => item.Description)
-                </div>
-                </td>
-                <td>
-                @Html.DisplayFor(modelItem => item.StreamURL)
-                </td> *@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RentalPrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SalePrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    @*  <td>
-                @Html.DisplayFor(modelItem => item.Bugget)
-                </td>
-                <td>
-                @Html.DisplayFor(modelItem => item.BackdropURL)
-                </td>
-                <td>
-                @Html.DisplayFor(modelItem => item.PosterURL)
-                </td> *@
-                    <td>
-                        <div class="d-flex flex-row justify-content-between">
-                            <div>
-                                <a class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movieModal" onclick="GetDetail(@item.Id)">Chi tiết</a>
-                            </div>
-                            <div>
-                                <a class="btn btn-warning">Sửa</a>
-                            </div>
-                            <div>
-                                <a class="btn btn-danger">Xoá</a>
-                            </div>
-                        </div>
-                        @*    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
-                    </td>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    @*  <th style="min-width:200px">
+                    @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.StreamURL)
+                    </th> *@
+                    <th>
+                        @Html.DisplayNameFor(model => model.RentalPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalePrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    @*   <th>
+                    @Html.DisplayNameFor(model => model.Bugget)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.BackdropURL)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.PosterURL)
+                    </th> *@
+                    <th>Thao tác</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        @*  <td>
+                    <div class="overflow-scroll" style="max-height:100px">
+                    @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.StreamURL)
+                    </td> *@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RentalPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SalePrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        @*  <td>
+                    @Html.DisplayFor(modelItem => item.Bugget)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.BackdropURL)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.PosterURL)
+                    </td> *@
+                        <td>
+                            <div class="d-flex flex-row justify-content-between">
+                                <div>
+                                    <a class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movieModal" onclick="GetDetail(@item.Id)">Chi tiết</a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-warning">Chỉnh sửa</a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-danger">Xoá</a>
+                                </div>
+                            </div>
+                            @*    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
 </div>
 
@@ -139,10 +144,37 @@
 </div>
 
 <script>
+    var base = "https://localhost:7279/"
     function GetDetail(id) {
-        var base = "https://localhost:7279/"
 
-        fetch(base + "Movie?id=" + id).then(       
+
+        fetch(base + "Movie?id=" + id).then(
+            response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                throw new Error('Request failed!')
+            }
+        ).then(jsonResponse => {
+            console.log(base + "Movie?id=" + id);
+            console.log(jsonResponse)
+            var movie = jsonResponse
+            var poster = document.querySelector('.movie-poster')
+            var title = document.querySelector('.modal-deltail-title')
+            var des = document.querySelector('.modal-deltail-des')
+            var genre = document.querySelector('.modal-deltail-genre')
+            var duration = document.querySelector('.modal-deltail-duration')
+            var bud = document.querySelector('.modal-deltail-bud')
+            var price = document.querySelector('.modal-deltail-price')
+
+            poster.src = movie.posterURL
+            title.innerHTML = movie.title
+            des.innerHTML = movie.description
+            genre.innerHTML = movie.Genre
+            duration.innerHTML = movie.Duration
+            bud.innerHTML = movie.bugget
+            price.innerHTML = movie.rentalPrice
+        }
         )
     }
 </script>
