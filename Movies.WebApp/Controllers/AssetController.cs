@@ -36,12 +36,12 @@ namespace Movies.WebApp.Controllers
             //    {
             //        TempData["acc"] = username;
 
-            //        HttpContext.Session.SetString("username",  acc.UserName.ToString()); // Lưu username vào session
+            //        HttpContext.Session.SetString("username", acc.UserName.ToString()); // Lưu username vào session
             //        HttpContext.Session.SetString("id", acc.Id.ToString());
             //        var role = _context.Roles.FirstOrDefault(x => x.Id == acc.RoleId)?.Name;
             //        HttpContext.Session.SetString("Role", role);
 
-            //        return RedirectToAction("Index","Home");
+            //        return RedirectToAction("Index", "Home");
             //    }
             //}
 
@@ -53,6 +53,13 @@ namespace Movies.WebApp.Controllers
             
             if(_serAss.Login(a) == true)
             {
+                TempData["acc"] = username;
+
+                HttpContext.Session.SetString("username", a.UserName.ToString()); // Lưu username vào session
+                HttpContext.Session.SetString("id", a.Id.ToString());
+                var role = _context.Roles.FirstOrDefault(x => x.Id == _context.Users.FirstOrDefault(c=>c.UserName==a.UserName).RoleId)?.Name;
+                HttpContext.Session.SetString("Role", role);
+
                 return RedirectToAction("Index","Home");
             }
             else
