@@ -27,7 +27,7 @@
 
             </figure>
 
-            <div class="movie-detail-content">
+            <div class="movie-detail-content p-2 rounded-3" style="background-color:rgb(36 44 56 / 60%);">
 
                 @* <p class="detail-subtitle">New Episodes</p> *@
 
@@ -44,13 +44,15 @@
                     </div>
 
                     <div class="ganre-wrapper">
-                        <a href="#">Comedy,</a>
+                        @if (ViewBag.GenreM!=null)
+                        {
+                            foreach (string item in ViewBag.GenreM)
+                            {
+                                <a href="#">@item</a>
+                            }
+                        }
+                    
 
-                        <a href="#">Action,</a>
-
-                        <a href="#">Adventure,</a>
-
-                        <a href="#">Science Fiction</a>
                     </div>
 
                     <div class="date-time">
@@ -58,7 +60,7 @@
                         <div>
                             <ion-icon name="calendar-outline"></ion-icon>
 
-                            <time datetime="2021">2021</time>
+                            <time datetime="2021">@ViewBag.ReleaseDate</time>
                         </div>
 
                         <div>
@@ -75,12 +77,12 @@
                     @Model.Description
                 </p>
 
-                <div class="details-actions">
+                <div class="details-actions border-0" style="background-color:rgb(36 44 56 / 0%);">
 
                     <button class="share">
                         <ion-icon name="share-social"></ion-icon>
 
-                        <span>Share</span>
+                        <span>Chia sẻ</span>
                     </button>
 
                     <div class="title-wrapper">
@@ -92,7 +94,7 @@
                     <button class="btn btn-primary">
                         <ion-icon name="play"></ion-icon>
 
-                        <span>Watch Now</span>
+                        <span>Thuê ngay</span>
                     </button>
 
                 </div>
