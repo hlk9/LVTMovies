@@ -61,21 +61,21 @@
                             @if (context.HttpContext.Session.GetString("Role") == "Admin")
                             {
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Quản Lý</a></li>
-                                    <li><a class="dropdown-item" href="#">Đơn Mua</a></li>
-                                    <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
+                                <li><a class="dropdown-item" asp-action="ListMovieManager" asp-controller="Movie" asp-route-id="@context.HttpContext.Session.GetString("id")">Quản Lý</a></li>
+                                <li><a class="dropdown-item" asp-action="MyBill" asp-controller="Bill" asp-route-id="@context.HttpContext.Session.GetString("id")">Đơn Mua</a></li>
+                                <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
                             </ul>
                         }
                         else if (context.HttpContext.Session.GetString("Role") == "Customer")
                         {
                             <ul class="dropdown-menu">
-                                <li>
-
+                                    <li>
                                     <a class="dropdown-item" asp-action="Personal_Page" asp-controller="Asset" asp-route-id="@context.HttpContext.Session.GetString("id")">Thông Tin Chi Tiết</a>
-
-                                    
                                     </li>
-                                <li><a class="dropdown-item" asp-action="MyBill" asp-controller="Bill" asp-route-id="@context.HttpContext.Session.GetString("id")">Đơn Mua</a></li>
+
+                                  
+
+                                    <li><a class="dropdown-item" asp-action="MyBill" asp-controller="Bill" asp-route-id="@context.HttpContext.Session.GetString("id")">Đơn Mua</a></li>
                                     <li><a class="dropdown-item" asp-action="LogOut" asp-controller="Asset">Đăng Xuất</a></li>
                                 </ul>
 
