@@ -1,20 +1,26 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
-using Movies.DAL.ViewModel;
+using Movies.DAL.ViewModels;
 using Movies.WebApp.Services;
 
 namespace Movies.WebApp.Controllers
 {
     public class AssetController : Controller
     {
+        //new
+       
+       
+        //
         MovieDbContext _context = new MovieDbContext();
         AssetServices _serAss = new AssetServices();
         public IActionResult Index()
         {
-            return View();
+            var personalpage = _serAss.GetAll();
+            return View(personalpage);
         }
 
 
@@ -95,12 +101,13 @@ namespace Movies.WebApp.Controllers
             }
         }
 
-
-
-        public IActionResult Personal_Page()
+        public IActionResult Personal_Page(Guid id)
         {
-            return View(); 
+            var personalpage = _serAss.GetById(id);
+            return View(personalpage);
+
         }
+        
 
         public IActionResult Logout()
         {
