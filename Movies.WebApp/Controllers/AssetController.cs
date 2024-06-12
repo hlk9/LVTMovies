@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
@@ -56,7 +57,7 @@ namespace Movies.WebApp.Controllers
                 TempData["acc"] = username;
 
                 HttpContext.Session.SetString("username", a.UserName.ToString()); // Lưu username vào session
-                HttpContext.Session.SetString("id", a.Id.ToString());
+                HttpContext.Session.SetString("id", _context.Users.FirstOrDefault(c => c.UserName == a.UserName).Id.ToString());
                 var role = _context.Roles.FirstOrDefault(x => x.Id == _context.Users.FirstOrDefault(c=>c.UserName==a.UserName).RoleId)?.Name;
                 HttpContext.Session.SetString("Role", role);
 

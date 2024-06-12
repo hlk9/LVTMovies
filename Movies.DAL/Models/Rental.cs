@@ -19,7 +19,7 @@ namespace Movies.DAL.Models
         public DateTime ReturnDate { get; set; }
         public byte Status { get; set; }
 
-        public virtual Payment Payment { get; set; }
+        public virtual Payment? Payment { get; set; }
 
     }
 }

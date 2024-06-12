@@ -34,7 +34,8 @@ namespace Movies.WebApp.Controllers
 
         public async Task<ActionResult> Detail(int id)
         {
-
+             
+            
             Movie movie = new Movie();
             using (var client = new HttpClient())
             {

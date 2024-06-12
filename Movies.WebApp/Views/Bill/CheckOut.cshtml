@@ -1,10 +1,12 @@
-﻿@*
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@using Movies.DAL.Models
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     
 }
-
+@model Movie
 <div style="background-color: #1f2229">
 
     <div class="container text-center py-5">
@@ -20,35 +22,35 @@
 
                         <div class="row my-3">
                             <div class="col-3">
-                                <img src="https://image.tmdb.org/t/p/original/lraHo9D8c0YWfxsKqT5P5sVqMKN.jpg" width="100%" alt="Alternate Text" />
+                                <img src="@Model.PosterURL" width="100%" alt="Alternate Text" />
                             </div>
 
                             <div class="col-7">
                                 <ul class="m-0 p-0">
                                     <li class="d-flex justify-content-between mb-3 text-white">
                                         <span>Tài Khoản</span>
-                                        <span class="fw-bold">Bacdtx</span>
+                                        <span class="fw-bold">@HttpContextAccessor.HttpContext.Session.GetString("username")</span>
                                     </li>
                                     <li class="d-flex justify-content-between mb-3  text-white">
                                         <span>Phim</span>
-                                        <span class="fw-bold">Mai</span>
+                                        <span class="fw-bold">@Model.Title</span>
                                     </li>
                                     <li class="d-flex justify-content-between mb-3  text-white">
                                         <span>Độ Phân Giải</span>
                                         <span class="fw-bold">HD</span>
                                     </li>
                                     <li class="d-flex justify-content-between mb-3" style="color: #e2d703">
-                                        <span>Thời Hạn*</span>
-                                        <span class="fw-bold">48 tiếng</span>
+                                        <span>Thời Hạn</span>
+                                        <span class="fw-bold">7 ngày</span>
                                     </li>
                                     <li class="d-flex justify-content-between mb-3" style="color: #e2d703">
                                         <span>Đơn Giá</span>
-                                        <span class="fw-bold">59.000đ</span>
+                                        <span class="fw-bold">@Model.RentalPrice</span>
                                     </li>
-                                    <li class="d-flex justify-content-between mb-3  text-white">
+                                   @*  <li class="d-flex justify-content-between mb-3  text-white">
                                         <span>Khuyến Mãi</span>
                                         <span class="fw-bold">0</span>
-                                    </li>
+                                    </li> *@
 
                                     <div class="w-100 border border-1 border-secondary my-3"></div>
 
@@ -60,17 +62,17 @@
                             </div>
                         </div>
 
-                        <span class="text-start text-white" style="font-size: 13px">* Lưu ý: Thời gian thuê phim là 30 ngày sau khi thuê và còn 48 giờ khi bắt đầu xem phim.</span>
+                        <span class="text-start text-white" style="font-size: 13px">* Lưu ý: Thời gian thuê phim tính từ 7 ngày sau khi thanh toán.</span>
 
                         <div class="w-100 border border-light my-3"></div>
 
-                        <div class="d-flex justify-content-between">
+                      @*   <div class="d-flex justify-content-between">
                             <a class="#" style="color: #e2d703">Áp Dụng Ưu Đãi</a>
                             <span class="fw-bold  text-white">></span>
-                        </div>
+                        </div> *@
                     </div>
                     <div class="d-flex justify-content-center mt-5 mb-5">
-                        <a class="btn btn-warning" asp-action="GoToPayment" asp-controller="Bill">Thanh toán</a>
+                        <a class="btn btn-warning" asp-action="GoToPayment" asp-controller="Bill" asp-route-mID="@Model.Id">Thanh toán</a>
                     </div>
                 </div>
 
