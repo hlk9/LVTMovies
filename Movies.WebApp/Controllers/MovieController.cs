@@ -27,10 +27,21 @@ namespace Movies.WebApp.Controllers
         {
             return View();
         }
-        public IActionResult WatchMovie()
+        public IActionResult WatchMovie(int id)
         {
-            var lstWatch = _context.Users.ToList();
-            return View(lstWatch);
+            var movieService = new MovieServices();
+            var movie = _movieServices.GetById(id);
+            if (movie == null)
+            {
+                return NotFound("không tìm thấy phim");
+            }
+
+            var movieViewModel = new MovieViewModel
+            {
+                Title = movie.Title,
+                StreamURL = movie.StreamURL
+            };
+            return View(movieViewModel);
         }
 
         public async Task<ActionResult> Detail(int id)
