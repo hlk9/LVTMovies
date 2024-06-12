@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "ListOfMoviesGenres";
 }
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" >
+
 <div style="background-color: #110f1a ;font-family:.VnArial">
 
     <h1 class="py-5 text-center text-white text-uppercase">Danh Sách Phim</h1>
@@ -29,13 +35,10 @@
             @foreach (var item in Model)
             {
 
-                <a asp-action="Detail" asp-controller="Movie" asp-asp-route-id="@item.Id" class="col-3 mb-5">
+                <a asp-action="Detail" asp-controller="Movie" asp-route-id="@item.Id" class="col-3 mb-5">
                     <img width="100%" src="@item.PosterURL" />
-                    <h6 class="nav-link text-white pt-3">@item.Title</h6>
-                    
+                    <h6 class="nav-link text-white pt-3 text-center fw-bold">@item.Title</h6>
                 </a>
-                
-               
             }
 
         </div>

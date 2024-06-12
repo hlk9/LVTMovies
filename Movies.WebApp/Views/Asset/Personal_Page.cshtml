@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@model Movies.DAL.Models.User
+@{
+    ViewData["Title"] = "Detail_Page";
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Bootstrap CSS -->
@@ -7,7 +11,7 @@
         body, html {
             height: 100%;
             margin: 0;
-            background-image: url('https://wallpapers.com/images/hd/movie-poster-background-tvke0r6ko2jpix0j.jpg'); /* Thay đổi với đường dẫn của hình ảnh của bạn */
+            background-image: url('https://designercomvn.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2017/07/26020212/poster-phim-hanh-dong.jpg'); /* Thay đổi với đường dẫn của hình ảnh của bạn */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -15,8 +19,7 @@
         }
 
         .profile-container {
-            
-            background: rgba(0, 0, 0, 0.7)  ;
+            background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -45,29 +48,25 @@
                 <div class="profile-container">
                     <!-- FullName Input -->
                     <div class="form-group">
-                        <label for="fullName">Họ và tên</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Họ và tên" name="fullName" value="Nguyễn Văn A">
+                        <label for="FullName">Họ và tên</label>
+                        <input type="text" class="form-control" asp-for="@Model.FullName"  />
                     </div>
                     <!-- Email Input -->
                     <div class="form-group">
-                        <label for="email">Địa chỉ Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Địa chỉ Email" name="email" value="example@example.com">
+                        <label for="Email">Địa chỉ Email</label>
+                        <input type="text" class="form-control" asp-for="@Model.Email"  />
                     </div>
                     <!-- UserName Input -->
                     <div class="form-group">
                         <label for="userName">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="userName" placeholder="Tên đăng nhập" name="userName" value="user123">
+                        <input type="text" class="form-control" asp-for="@Model.UserName"  />
                     </div>
-                    <!-- Gender Input -->
+
                     <div class="form-group">
-                        <label for="gender">Giới tính</label>
-                        <input type="text" class="form-control" id="gender" placeholder="Giới tính" name="gender" value="Nam">
+                        <label for="password"> Mat khau </label>
+                        <input type="text" class="form-control" asp-for="@Model.Password"  />
                     </div>
-                    <!-- Status Input -->
-                    <div class="form-group">
-                        <label for="status">Trạng thái</label>
-                        <input type="text" class="form-control" id="status" placeholder="Trạng thái" name="status" value="Active">
-                    </div>
+
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary btn-block">Cập nhật</button>
                 </div>

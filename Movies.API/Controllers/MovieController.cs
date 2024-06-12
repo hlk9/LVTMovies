@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Models;
 using Movies.DAL.ViewModels;
+using System.Net.WebSockets;
 
 namespace Movies.API.Controllers
 {
@@ -13,10 +14,10 @@ namespace Movies.API.Controllers
         public Movie Get(int id)
         {
             var context = new DAL.Context.MovieDbContext();
-           return  context.Movies.Find(id);
+            return context.Movies.Find(id);
         }
         [HttpGet("get-movie-by-genre-id")]
-        public List<Movie>  GetMovieByGenre(int id) 
+        public List<Movie> GetMovieByGenre(int id)
         {
             var context = new DAL.Context.MovieDbContext();
 
@@ -25,8 +26,8 @@ namespace Movies.API.Controllers
 
 
             List<Movie> lstMovie = new List<Movie>();
-             
-            for(int i = 0; i < idMovie.Count; i++) 
+
+            for (int i = 0; i < idMovie.Count; i++)
             {
                 Movie movie = context.Movies.Find(idMovie[i]);
                 lstMovie.Add(movie);
@@ -36,7 +37,7 @@ namespace Movies.API.Controllers
             //          join c in context.Genres on b.GenreID equals c.Id
             //          select new ViewModel.ListOfMoviesGenreViewModel
             //          {
-                        
+
             //              Title = a.Title,
             //              GenreID = c.Id,
             //              Rental = a.RentalPrice,
@@ -45,7 +46,7 @@ namespace Movies.API.Controllers
             //          };
             //var result = await lst.ToListAsync();
             return lstMovie;
-                      
+
         }
 
 
@@ -65,5 +66,96 @@ namespace Movies.API.Controllers
             return context.Genres.ToList();
         }
 
+        [HttpDelete("Delete-Movie/{id}")]
+        public bool DeleteMovie(int id)
+        {
+            try
+            {
+                var context = new DAL.Context.MovieDbContext();
+                var movie = context.Movies.Find(id);
+                context.Movies.Remove(movie);
+                context.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        [HttpPost("Create-Movie")]
+        public bool CreateMovie(Movie movie)
+        {
+            try
+            {
+                var context = new DAL.Context.MovieDbContext();
+
+                var a=  context.Movies.Where(x => x.Title == movie.Title).FirstOrDefault();
+                if (a != null)
+                {
+                    return false;
+                }
+
+                context.Movies.Add(movie);
+                context.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        [HttpPut("Update-Movie")]
+        public bool UpdateMovie(Movie movie)
+        {
+            try
+            {
+                var context = new DAL.Context.MovieDbContext();
+                var up = context.Movies.Find(movie.Id);
+                up.Title = movie.Title;
+                up.Description = movie.Description;
+                up.RentalPrice = movie.RentalPrice;
+                up.SalePrice = movie.SalePrice;
+                up.PosterURL = movie.PosterURL;
+                up.Status = movie.Status;
+                up.BackdropURL = movie.BackdropURL;
+                up.StreamURL = movie.StreamURL;
+                up.Bugget = movie.Bugget;
+
+                context.Movies.Update(up);
+                context.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        [HttpPost("Add-Movie-Genre")]
+        public bool AddGenreForMovie(MovieGenre mg)
+        {
+            try
+            {
+
+                var context = new DAL.Context.MovieDbContext();
+
+                var a = context.MovieGenres.Where(x => x.MovieID == mg.MovieID && x.GenreID == mg.GenreID).FirstOrDefault();
+                if (a != null)
+                {
+                    return false;
+                }
+
+                context.MovieGenres.Add(mg);
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }

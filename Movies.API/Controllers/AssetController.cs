@@ -1,6 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Movies.API.ViewModel;
+using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModel;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Movies.API.Controllers
 {
@@ -8,41 +16,38 @@ namespace Movies.API.Controllers
     [ApiController]
     public class AssetController : ControllerBase
     {
-        [HttpGet("GetUserById")]
-        public User GetUserByID(Guid id)
+        MovieDbContext _context = new MovieDbContext();
+        [HttpPost("Login")]
+        public ActionResult Login(LoginViewModels lvm)
         {
-            var context = new DAL.Context.MovieDbContext();
-            return context.Users.Find(id);
-        }
-
-        [HttpGet("GetAllUser")]
-        public  ICollection<User> GetAllUser()
-        {
-            var context = new DAL.Context.MovieDbContext();
-            var user = context.Users.ToList();
-            return user;
-        }
-
-        [HttpPost("Create-User")]
-        public ActionResult CreateUser(User user)
-        {
-            try
+            
+            if (lvm.UserName == null && lvm.Password == null) 
             {
-                var context = new DAL.Context.MovieDbContext();
-                context.Users.Add(user);
-                context.SaveChanges();
-                return Ok();
-            }
-            catch (Exception)
-            {
-
                 return BadRequest();
             }
+            else
+            {
+                var acc = _context.Users.FirstOrDefault(x => x.UserName == lvm.UserName && x.Password == lvm.Password);
+                if (acc == null)
+                    return BadRequest();
+                else
+                {
+                    
+                   
+                    return Ok("Success");
+                }
+            }
         }
 
+        
+       
 
+        
 
 
 
     }
+
+
+
 }
