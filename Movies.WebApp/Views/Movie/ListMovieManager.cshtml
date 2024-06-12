@@ -9,7 +9,7 @@
     Danh sách Phim
 </h2>
 <div>
-    <a class="btn btn-primary" asp-action="CreateMovie" asp-controller="Movie" >Thêm phim</a>
+    <a class="btn btn-primary" asp-action="CreateMovie" asp-controller="Movie">Thêm phim</a>
 </div>
 <div class="m-5 p-6">
     <div class="overflow-auto">
@@ -128,10 +128,10 @@
                         <div class="movie-description">
                             <p class="modal-deltail-des">Tony Stark tự hé lộ thân phận Người sắt của mình cho công chúng và chìm trong hào quang danh vọng. Một kẻ lạ mặt xuất hiện tấn công anh trên đường đua Monte Carlo. Tony bị hiện tượng nhiễm trùng máu đe dọa mạng sống, còn tên sát thủ kia bắt tay với đối thủ của tập đoàn Stark hòng thôn tính Tony.  Phần 2 của Người sắt là lần đầu tiên trợ thủ Warmachine xuất hiện. Phim cũng tiết lộ những bí mật về cha của Tony, Howard Stark, trước khi dẫn dắt câu chuyện sang nhân vật Captain America, đồng đội tương lai của Người sắt tại tổ chức SHIELD.</p>
                         </div>
-                        <div class=" d-flex flex-row"><strong>Thể loại:</strong> <p class="modal-deltail-genre">Action</p></div>
-                        <div class=" d-flex flex-row"><strong>Độ dài:</strong><p class="modal-deltail-duration"></p></div>
-                        <div class=" d-flex flex-row"><strong>Kinh phí:</strong> <p class="modal-deltail-bud">100000</p> USD</div>
-                        <div class=" d-flex flex-row"><strong>Giá thuê:</strong> <p class="modal-deltail-price"> 59000</p>  VND</div>
+                        <div class=" d-flex flex-row"><strong>Thể loại:</strong> <p class="modal-deltail-genre ms-1">Action</p></div>
+                        <div class=" d-flex flex-row"><strong>Trạng thái:</strong><p class="modal-deltail-status ms-1"></p></div>
+                        <div class=" d-flex flex-row"><strong>Kinh phí:</strong> <p class="modal-deltail-bud ms-1">  100000</p> USD</div>
+                        <div class=" d-flex flex-row"><strong>Giá thuê:</strong> <p class="modal-deltail-price ms-1">   59000</p>  VND</div>
                     </div>
                 </div>
             </div>
@@ -162,19 +162,45 @@
             var poster = document.querySelector('.movie-poster')
             var title = document.querySelector('.modal-deltail-title')
             var des = document.querySelector('.modal-deltail-des')
-            var genre = document.querySelector('.modal-deltail-genre')
-            var duration = document.querySelector('.modal-deltail-duration')
+          
+            var status = document.querySelector('.modal-deltail-status')
             var bud = document.querySelector('.modal-deltail-bud')
             var price = document.querySelector('.modal-deltail-price')
 
             poster.src = movie.posterURL
             title.innerHTML = movie.title
             des.innerHTML = movie.description
-            genre.innerHTML = movie.Genre
-            duration.innerHTML = movie.Duration
+            status.innerHTML = movie.status
+
+            console.log(movie.status)
+
             bud.innerHTML = movie.bugget
             price.innerHTML = movie.rentalPrice
         }
         )
+
+
+        fetch(base + "Movie/Get-Genre-Name-Movie/" + id)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Request failed!');
+            })
+            .then(jsonResponse => {
+                var genre = document.querySelector('.modal-deltail-genre')
+                console.log(jsonResponse);
+
+           
+                const genreString = jsonResponse.join(', '); 
+
+                genre.innerHTML = genreString;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
+
     }
 </script>

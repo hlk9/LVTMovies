@@ -157,5 +157,18 @@ namespace Movies.API.Controllers
             }
 
         }
+        [HttpGet("Get-Genre-Name-Movie/{id}")]
+        public List<string> GetGenreMovie(int id)
+        {
+            var context = new DAL.Context.MovieDbContext();
+            var list = context.MovieGenres.Where(x => x.MovieID == id).ToList();
+            List<string> lst = new List<string>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                Genre genre = context.Genres.Find(list[i].GenreID);
+                lst.Add(genre.Name);
+            }
+            return lst;
+        }
     }
 }
