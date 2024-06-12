@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Movies.DAL.ViewModels.BillMovieViewModel>
+
+@{
+    ViewData["Title"] = "MyBill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Danh sách phim đã thuê</h1>
+
+<div class="d-flex justify-content-center p-4">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="d-none">
+                    @Html.DisplayNameFor(model => model.RentalId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieName)
+                </th>
+                <th class="d-none">
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReturnDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="d-none">
+                        @Html.DisplayFor(modelItem => item.RentalId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieName)
+                    </td>
+                    <td class="d-none">
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RentalDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnDate)
+                    </td>
+                    <td>
+                        @if (item.Status == true)
+                        {
+                            <span class="badge bg-success">Khả dụng</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Đã hết hạn</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                      <a class="btn btn-warning">Xem ngay</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
