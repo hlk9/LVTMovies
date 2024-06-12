@@ -27,14 +27,15 @@ namespace Movies.WebApp.Controllers
             if (HttpContext.Session.GetString("id") == null)
             {
                 return RedirectToAction("Login", "Asset");
-            }
+            }          
+
 
             Guid uid = Guid.Parse(HttpContext.Session.GetString("id"));
 
             var adf = _context.Rentals.Where(x => x.UserID == uid && x.MovieID == mId && x.RentalDate < DateTime.Now && x.ReturnDate > DateTime.Now).FirstOrDefault();
             if (adf != null)
             {
-                ViewBag.isRented = true;
+                
             }
 
             var mov = _context.Movies.Find(mId);

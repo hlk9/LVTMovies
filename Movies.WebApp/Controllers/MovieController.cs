@@ -4,6 +4,7 @@ using Movies.DAL.Context;
 using Movies.DAL.Models;
 using Movies.DAL.ViewModels;
 using Movies.WebApp.Services;
+using Movies.WebApp.ViewModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -34,8 +35,38 @@ namespace Movies.WebApp.Controllers
 
         public async Task<ActionResult> Detail(int id)
         {
-             
-            
+
+            var options = new RestClientOptions("https://api.themoviedb.org/3/movie/popular?language=vi-VN&page=2");
+            var client3 = new RestClient(options);
+            var request = new RestRequest("");
+            request.AddHeader("accept", "application/json");
+            request.AddHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDc3ZWNlYjI4OWQ0YzBjMWE3M2VlNjRmODNlMjdkMyIsInN1YiI6IjY2M2EzZGNlMzU4ZGE3MDEyNDU3OGI3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SSQffIQ5zchkh83x_TBRYyEa1PVZB_X0R80-yJSkPeI");
+            var response = await client3.GetAsync(request);
+
+            JObject detailJsonPopular = JObject.Parse(response.Content);
+
+            var movies = new List<MoviePopularViewModel>();
+
+            foreach (var item in detailJsonPopular["results"])
+            {
+
+                if (movies.Count < 4)
+                {
+                    movies.Add(new MoviePopularViewModel
+                    {
+                        MovieId = (int)item["id"],
+                        Title = item["title"].ToString(),
+                        PosterPath = item["poster_path"].ToString(),
+                        ReleaseDate = DateTime.Parse(item["release_date"].ToString()),
+                        Rating = (double)item["vote_average"]
+
+                    });
+                }
+            }
+            ViewBag.PopularMovies = movies;
+
+
+
             Movie movie = new Movie();
             using (var client = new HttpClient())
             {

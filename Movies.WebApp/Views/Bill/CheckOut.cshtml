@@ -4,7 +4,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    
+
 }
 @model Movie
 <div style="background-color: #1f2229">
@@ -47,9 +47,9 @@
                                         <span>Đơn Giá</span>
                                         <span class="fw-bold">@Model.RentalPrice</span>
                                     </li>
-                                   @*  <li class="d-flex justify-content-between mb-3  text-white">
-                                        <span>Khuyến Mãi</span>
-                                        <span class="fw-bold">0</span>
+                                    @*  <li class="d-flex justify-content-between mb-3  text-white">
+                                    <span>Khuyến Mãi</span>
+                                    <span class="fw-bold">0</span>
                                     </li> *@
 
                                     <div class="w-100 border border-1 border-secondary my-3"></div>
@@ -66,13 +66,18 @@
 
                         <div class="w-100 border border-light my-3"></div>
 
-                      @*   <div class="d-flex justify-content-between">
-                            <a class="#" style="color: #e2d703">Áp Dụng Ưu Đãi</a>
-                            <span class="fw-bold  text-white">></span>
+                        @*   <div class="d-flex justify-content-between">
+                        <a class="#" style="color: #e2d703">Áp Dụng Ưu Đãi</a>
+                        <span class="fw-bold  text-white">></span>
                         </div> *@
                     </div>
                     <div class="d-flex justify-content-center mt-5 mb-5">
-                        <a class="btn btn-warning" asp-action="GoToPayment" asp-controller="Bill" asp-route-mID="@Model.Id">Thanh toán</a>
+
+                      
+                       
+                            <a class="btn btn-warning" asp-action="GoToPayment" asp-controller="Bill" asp-route-mID="@Model.Id">Thanh toán</a>
+                        
+                     
                     </div>
                 </div>
 

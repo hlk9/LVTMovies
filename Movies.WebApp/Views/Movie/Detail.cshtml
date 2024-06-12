@@ -1,4 +1,5 @@
 ﻿@using Movies.DAL.Models
+@using Movies.WebApp.ViewModel
 @model Movie
 
 <head>
@@ -14,9 +15,9 @@
 <article>
 
     <section class="movie-detail position-relative" style="background:url(@Model.BackdropURL)">
-       
+
         <div class="container">
-             
+
             <figure class="movie-detail-banner">
 
                 <img src="@Model.PosterURL" alt="">
@@ -44,14 +45,14 @@
                     </div>
 
                     <div class="ganre-wrapper">
-                        @if (ViewBag.GenreM!=null)
+                        @if (ViewBag.GenreM != null)
                         {
                             foreach (string item in ViewBag.GenreM)
                             {
                                 <a href="#">@item</a>
                             }
                         }
-                    
+
 
                     </div>
 
@@ -91,15 +92,15 @@
                         <p class="text">Streaming Channels</p>
                     </div>
 
-                  
-                        <a class="btn btn-primary" asp-action="CheckOut" asp-controller="Bill" asp-route-mId="@Model.Id">
-                            <ion-icon name="play"></ion-icon>
 
-                            <span>Thuê ngay</span>
-                        </a>
-                 
+                    <a class="btn btn-primary" asp-action="CheckOut" asp-controller="Bill" asp-route-mId="@Model.Id">
+                        <ion-icon name="play"></ion-icon>
 
-                
+                        <span>Thuê ngay</span>
+                    </a>
+
+
+
 
                 </div>
 
@@ -125,155 +126,49 @@
     <section class="tv-series">
         <div class="container">
 
-            <p class="section-subtitle">Best TV Series</p>
+            <p class="section-subtitle">Các phim liên quan</p>
 
-            <h2 class="h2 section-title">World Best TV Series</h2>
+            <h2 class="h2 section-title">HOT trong tháng</h2>
 
             <ul class="movies-list">
+                @foreach (MoviePopularViewModel item in ViewBag.PopularMovies)
+                {
+                    <li>
+                        <div class="movie-card">
 
-                <li>
-                    <div class="movie-card">
-
-                        <a href="~/movie-details.html">
-                            <figure class="card-banner">
-                                <img src="~/assets/images/series-1.png" alt="Moon Knight movie poster">
-                            </figure>
-                        </a>
-
-                        <div class="title-wrapper">
-                            <a href="~/movie-details.html">
-                                <h3 class="card-title">Moon Knight</h3>
+                            <a asp-controller="Movie" asp-action="Detail" asp-route-id="@item.MovieId">
+                                <figure class="card-banner">
+                                    <img src="https://image.tmdb.org/t/p/original/@item.PosterPath" alt="">
+                                </figure>
                             </a>
 
-                            <time datetime="2022">2022</time>
-                        </div>
+                            <div class="title-wrapper">
+                                <a href="./movie-details.html">
+                                    <h3 class="card-title">@item.Title</h3>
+                                </a>
 
-                        <div class="card-meta">
-                            <div class="badge badge-outline">2K</div>
-
-                            <div class="duration">
-                                <ion-icon name="time-outline"></ion-icon>
-
-                                <time datetime="PT47M">47 min</time>
+                                <time datetime="2022">@item.ReleaseDate.Year</time>
                             </div>
 
-                            <div class="rating">
-                                <ion-icon name="star"></ion-icon>
+                            <div class="card-meta">
+                                <div class="badge badge-outline">HD</div>
 
-                                <data>8.6</data>
-                            </div>
-                        </div>
+                                <div class="duration">
+                                    <ion-icon name="time-outline"></ion-icon>
 
-                    </div>
-                </li>
+                                    <time datetime="PT137M">137 min</time>
+                                </div>
 
-                <li>
-                    <div class="movie-card">
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
 
-                        <a href="~/movie-details.html">
-                            <figure class="card-banner">
-                                <img src="~/assets/images/series-2.png" alt="Halo movie poster">
-                            </figure>
-                        </a>
-
-                        <div class="title-wrapper">
-                            <a href="~/movie-details.html">
-                                <h3 class="card-title">Halo</h3>
-                            </a>
-
-                            <time datetime="2022">2022</time>
-                        </div>
-
-                        <div class="card-meta">
-                            <div class="badge badge-outline">2K</div>
-
-                            <div class="duration">
-                                <ion-icon name="time-outline"></ion-icon>
-
-                                <time datetime="PT59M">59 min</time>
+                                    <data>@item.Rating</data>
+                                </div>
                             </div>
 
-                            <div class="rating">
-                                <ion-icon name="star"></ion-icon>
-
-                                <data>8.8</data>
-                            </div>
                         </div>
-
-                    </div>
-                </li>
-
-                <li>
-                    <div class="movie-card">
-
-                        <a href="~/movie-details.html">
-                            <figure class="card-banner">
-                                <img src="~/assets/images/series-3.png" alt="Vikings: Valhalla movie poster">
-                            </figure>
-                        </a>
-
-                        <div class="title-wrapper">
-                            <a href="~/movie-details.html">
-                                <h3 class="card-title">Vikings: Valhalla</h3>
-                            </a>
-
-                            <time datetime="2022">2022</time>
-                        </div>
-
-                        <div class="card-meta">
-                            <div class="badge badge-outline">2K</div>
-
-                            <div class="duration">
-                                <ion-icon name="time-outline"></ion-icon>
-
-                                <time datetime="PT51M">51 min</time>
-                            </div>
-
-                            <div class="rating">
-                                <ion-icon name="star"></ion-icon>
-
-                                <data>8.3</data>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-
-                <li>
-                    <div class="movie-card">
-
-                        <a href="~/movie-details.html">
-                            <figure class="card-banner">
-                                <img src="~/assets/images/series-4.png" alt="Money Heist movie poster">
-                            </figure>
-                        </a>
-
-                        <div class="title-wrapper">
-                            <a href="~/movie-details.html">
-                                <h3 class="card-title">Money Heist</h3>
-                            </a>
-
-                            <time datetime="2017">2017</time>
-                        </div>
-
-                        <div class="card-meta">
-                            <div class="badge badge-outline">4K</div>
-
-                            <div class="duration">
-                                <ion-icon name="time-outline"></ion-icon>
-
-                                <time datetime="PT70M">70 min</time>
-                            </div>
-
-                            <div class="rating">
-                                <ion-icon name="star"></ion-icon>
-
-                                <data>8.3</data>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
+                    </li>
+                }
 
             </ul>
 
