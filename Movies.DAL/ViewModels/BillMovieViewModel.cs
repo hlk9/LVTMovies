@@ -9,6 +9,7 @@ namespace Movies.DAL.ViewModels
 {
     public class BillMovieViewModel
     {
+        public int MovieId { get; set; }
        public int RentalId { get; set; }
         [DisplayName("Tên Phim")]
         public string MovieName { get; set; }

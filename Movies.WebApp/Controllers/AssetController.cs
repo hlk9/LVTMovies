@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Context;
 using Movies.DAL.Models;
+using Movies.DAL.ViewModel;
 using Movies.DAL.ViewModels;
 using Movies.WebApp.Services;
 

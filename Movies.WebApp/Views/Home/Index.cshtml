@@ -23,40 +23,14 @@
 
                 <div class="meta-wrapper">
 
-                    <div class="badge-wrapper">
-                        <div class="badge badge-fill text-dark">PG 18</div>
-
-                        <div class="badge badge-outline">HD</div>
-                    </div>
-
-                    <div class="ganre-wrapper">
-                        <a href="#" class="nav-link p-0">Tìm cảm,</a>
-
-                        <a href="#" class="nav-link p-0">Chính kịch</a>
-                    </div>
-
-                    <div class="date-time">
-
-                        <div>
-                            <ion-icon name="calendar-outline"></ion-icon>
-
-                            <time datetime="2022">2022</time>
-                        </div>
-
-                        <div>
-                            <ion-icon name="time-outline"></ion-icon>
-
-                            <time datetime="PT128M">128p</time>
-                        </div>
-
-                    </div>
+                  Hãy bắt đầu với một bộ phim ngẫu nhiên ngay bây giờ
 
                 </div>
 
-                <button class="btn text-white fw-bold rounded-pill px-4 py-2 d-flex align-items-center" style="border: 2px solid #e2d703; background-color: #11141d">
+                <button   class="btn text-white fw-bold rounded-pill px-4 py-2 d-flex align-items-center" style="border: 2px solid #e2d703; background-color: #11141d">
                     <ion-icon name="play"></ion-icon>
 
-                    <span>Xem ngay</span>
+                    <a asp-action="Detail" asp-controller="Movie" asp-route-id="@ViewBag.RandomMovie" style="color:#e2d703">Xem ngay</a>
                 </button>
 
             </div>

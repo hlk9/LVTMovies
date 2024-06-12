@@ -29,6 +29,22 @@ namespace Movies.WebApp.Controllers
         }
         public IActionResult WatchMovie(int id)
         {
+
+            if (HttpContext.Session.GetString("id") == null)
+            {
+                return RedirectToAction("Login", "Asset");
+            }
+
+            int mId = id;
+            Guid uid = Guid.Parse(HttpContext.Session.GetString("id"));
+
+            var adf = _context.Rentals.Where(x => x.UserID == uid && x.MovieID == mId && x.RentalDate < DateTime.Now && x.ReturnDate > DateTime.Now).FirstOrDefault();
+            if (adf == null)
+            {
+               
+                return RedirectToAction("CheckOut", "Bill", new { mId });
+            }
+
             var movieService = new MovieServices();
             var movie = _movieServices.GetById(id);
             if (movie == null)

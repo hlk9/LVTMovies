@@ -4,6 +4,6 @@
         <h4 class="text-light text-center">@ViewBag.Title</h4>
     </div>
     <div class="pt-3 mb-3">
-        <a class="btn btn-success">Xem phim đã thuê ngay!</a>
+        <a asp-action="WatchMovie" asp-controller="Movie" asp-route-id="@ViewBag.MovieId" class="btn btn-success">Xem phim đã thuê ngay!</a>
     </div>
 </div>

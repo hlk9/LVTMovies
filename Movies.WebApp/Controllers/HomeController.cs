@@ -70,6 +70,8 @@ namespace Movies.WebApp.Controllers
 
             ViewBag.PopularMovies2 = movies2;
 
+            ViewBag.RandomMovie = movies2[new Random().Next(0, movies2.Count)].MovieId;
+
 
             return View();
         }

@@ -35,7 +35,8 @@ namespace Movies.WebApp.Controllers
             var adf = _context.Rentals.Where(x => x.UserID == uid && x.MovieID == mId && x.RentalDate < DateTime.Now && x.ReturnDate > DateTime.Now).FirstOrDefault();
             if (adf != null)
             {
-                
+                int id = mId;
+                return RedirectToAction("WatchMovie","Movie", new { id });
             }
 
             var mov = _context.Movies.Find(mId);
@@ -112,6 +113,7 @@ namespace Movies.WebApp.Controllers
         {
             var mov = _context.Movies.Find(mId);
             ViewBag.Title = mov.Title;
+            ViewBag.MovieId = mov.Id;
             return View();
         }
       
@@ -133,13 +135,14 @@ namespace Movies.WebApp.Controllers
                       where rent.UserID ==uid
                       select new Movies.DAL.ViewModels.BillMovieViewModel
                       {
+                          MovieId = mov.Id,
                           RentalId = rent.Id,
                           MovieName = mov.Title,
                           UserName = _context.Users.Find(rent.UserID).UserName,
                           RentalDate = rent.RentalDate,
                           ReturnDate = rent.ReturnDate,
                           Status = rent.ReturnDate < DateTime.Now ? false : true,
-                          Price =1111
+                          Price = _context.Payments.FirstOrDefault(x => x.RentalID == rent.Id).Amount
                       }).OrderByDescending(x=>x.ReturnDate).ToList();
             return View(lst);
         }
