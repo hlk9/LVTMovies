@@ -25,7 +25,7 @@ namespace Movies.API.Controllers
 
 
             List<Movie> lstMovie = new List<Movie>();
-
+             
             for(int i = 0; i < idMovie.Count; i++) 
             {
                 Movie movie = context.Movies.Find(idMovie[i]);
@@ -64,5 +64,6 @@ namespace Movies.API.Controllers
             var context = new DAL.Context.MovieDbContext();
             return context.Genres.ToList();
         }
+
     }
 }

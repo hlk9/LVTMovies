@@ -47,7 +47,14 @@ namespace Movies.WebApp.Services
             return list;
         }
 
+        public Movie GetById(int id)
+        {
+            client = new HttpClient();
+            string requestUrl = baseURL + $@"Movie?id={id}";
+            var response = client.GetStringAsync(requestUrl).Result;
+            var list = JsonConvert.DeserializeObject<Movie>(response);
+            return list;
+        }
 
-      
     }
 }
