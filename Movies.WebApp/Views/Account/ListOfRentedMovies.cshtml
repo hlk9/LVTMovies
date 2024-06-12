@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Movies.DAL.ViewModels.RentalDetail>
 
-
 <div style="background-color: #1f2229">
     <div class="container" style="color: white">
         <h1 style="text-align: center; margin-bottom: 30px;">Danh Sách Phim Đã Thuê</h1>
@@ -29,7 +28,7 @@
                         <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.RentalDate.ToString("dd/MM/yyyy")</td>
                         <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">@item.ReturnDate.ToString("dd/MM/yyyy")</td>
                         <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #3c424f;">
-                            <button type="button" class="btn btn-outline-warning " style="border-color: yellow; color: white">Xem Phim</button>
+                            <a type="button" class="btn btn-outline-warning " asp-controller="Movie" asp-action="WatchMovie" asp-route-id="@item.IdMovie" style="border-color: yellow; color: white">Xem Phim</a>
                             <button type="button" class="btn btn-outline-success " style="border-color: green; color: white">Thuê Lại</button>
                         </td>
                     </tr>

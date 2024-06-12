@@ -8,6 +8,7 @@ namespace Movies.DAL.ViewModels
 {
     public class RentalDetail
     {
+        public int IdMovie { get; set; }
         public int PaymentId { get; set; }
         public string MovieTitle { get; set; }
         public byte RentalStatus { get; set; }
