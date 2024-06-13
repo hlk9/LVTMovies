@@ -126,7 +126,14 @@ namespace Movies.WebApp.Controllers
                         JObject detailJson = JObject.Parse(detailResponse.Content);
 
 
-                        ViewBag.ReleaseDate = detailJson["release_date"].ToString().Split("-")[0];
+                       try
+                        {
+                            ViewBag.ReleaseDate = detailJson["release_date"].ToString().Split("-")[0];
+                        }
+                        catch
+                        {
+                            ViewBag.ReleaseDate = "Chưa cập nhật";
+                        }
 
                         ViewBag.GenreM = genreM;
                         return View(movie);
@@ -167,7 +174,6 @@ namespace Movies.WebApp.Controllers
                         }
                         else
                         {
-
                             newMovie.Bugget = 0;
                         }
 
@@ -264,6 +270,60 @@ namespace Movies.WebApp.Controllers
                 { }
             }
             return View();
+        }
+
+        public IActionResult EditMovie(int id)
+        {
+            GenreServices genreServices = new GenreServices();
+            var lstGenre = genreServices.GetAllGenre();
+            ViewBag.Genres = lstGenre;
+            var mv = _movieServices.GetById(id);
+            return View(mv);
+        }
+
+        [HttpPost]
+        public IActionResult EditMovie(Movie mv, string[] genres)
+        {
+            if (_movieServices.UpdateMovie(mv) == true)
+            {
+                try
+                {
+                    var currentList = _context.MovieGenres.Where(x => x.MovieID == mv.Id).ToList();
+                    foreach (var item in currentList)
+                    {
+                        _context.MovieGenres.Remove(item);
+                    }
+
+
+                    foreach (var item in genres)
+                    {
+                        MovieGenre mg = new MovieGenre();
+                        mg.MovieID = mv.Id;
+                        mg.GenreID = int.Parse(item);
+                        _movieServices.AddMovieGenre(mg);
+                    }
+
+                    _context.SaveChanges();
+                    return RedirectToAction("ListMovieManager");
+                }
+                catch
+                { }
+            }
+            return View(mv);
+        }
+
+        public IActionResult DeleteMovie(int id)
+        {
+          try
+            {
+                _context.Movies.Remove(_context.Movies.Find(id));
+                _context.SaveChanges();
+                return RedirectToAction("ListMovieManager");
+            }
+            catch
+            {
+                return NotFound();
+            }
         }
     }
 }

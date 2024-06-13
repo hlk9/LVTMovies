@@ -91,10 +91,10 @@
                                     <a class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movieModal" onclick="GetDetail(@item.Id)">Chi tiết</a>
                                 </div>
                                 <div>
-                                    <a class="btn btn-warning">Chỉnh sửa</a>
+                                    <a asp-action="EditMovie" asp-controller="Movie" asp-route-id="@item.Id" class="btn btn-warning">Chỉnh sửa</a>
                                 </div>
                                 <div>
-                                    <a class="btn btn-danger">Xoá</a>
+                                    <a asp-action="DeleteMovie" asp-controller="Movie" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
                                 </div>
                             </div>
                             @*    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

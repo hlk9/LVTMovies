@@ -57,7 +57,11 @@
                 </div>
                 <div class="form-group mb-3">
                     <label asp-for="Status" class="control-label"></label>
-                    <input asp-for="Status" class="form-control" />
+                   <select asp-for="Status" class="form-control">
+                        <option value="Released">Đang chiếu</option>
+                        <option value="Un-Released">Sắp ra mắt</option>
+                        <option value="Stop">Ngừng chiếu</option>
+                   </select>
                     <span asp-validation-for="Status" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
