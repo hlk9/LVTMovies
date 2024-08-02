@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.WebApp", "Movies.WebApp\Movies.WebApp.csproj", "{6B23846B-CB4B-4DA9-905E-E44E04DD8405}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.WebApp", "Movies.WebApp\Movies.WebApp.csproj", "{6B23846B-CB4B-4DA9-905E-E44E04DD8405}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.API", "Movies.API\Movies.API.csproj", "{66E9160C-69F0-403E-B80E-E747C3DD2F67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.API", "Movies.API\Movies.API.csproj", "{66E9160C-69F0-403E-B80E-E747C3DD2F67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.DAL", "Movies.DAL\Movies.DAL.csproj", "{9DFA9BC3-9798-4A9C-BCE6-CD7F28884E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.DAL", "Movies.DAL\Movies.DAL.csproj", "{9DFA9BC3-9798-4A9C-BCE6-CD7F28884E9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LVTWebASM", "LVTWebASM\LVTWebASM.csproj", "{4F7AB070-362A-4CF2-B0D4-CA29BCEC7415}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9DFA9BC3-9798-4A9C-BCE6-CD7F28884E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DFA9BC3-9798-4A9C-BCE6-CD7F28884E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DFA9BC3-9798-4A9C-BCE6-CD7F28884E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F7AB070-362A-4CF2-B0D4-CA29BCEC7415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7AB070-362A-4CF2-B0D4-CA29BCEC7415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F7AB070-362A-4CF2-B0D4-CA29BCEC7415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7AB070-362A-4CF2-B0D4-CA29BCEC7415}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

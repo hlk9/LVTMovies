@@ -1,0 +1,66 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider Theme="@MyCustomTheme" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<div class="page">
+    @* <div class="sidebar">
+    <NavMenu />
+    </div> *@
+
+    <main>
+        <MudAppBar Color="Color.Primary" Fixed="true" Class="position-sticky">
+            <MudImage Src="/assets/images/logo.svg"></MudImage>
+            <MudSpacer />
+            <div class="d-flex flex-row">
+                <MudLink class="me-2" Color="@Color.Tertiary">Phim</MudLink>
+                <MudLink class="me-2" Color="@Color.Tertiary">Phim bộ</MudLink>
+                <MudLink class="me-2" Color="@Color.Tertiary">Bảng giá</MudLink>
+            </div>
+            <MudSpacer />
+            <div>
+                <MudMenu>
+                    <ActivatorContent>
+                        <MudAvatar Color="Color.Tertiary">D</MudAvatar>
+                    </ActivatorContent>
+                    <ChildContent>
+                        <MudMenuItem>Profile</MudMenuItem>
+                        <MudMenuItem>Theme</MudMenuItem>
+                        <MudMenuItem>Usage</MudMenuItem>
+                        <MudMenuItem>Sign Out</MudMenuItem>
+                    </ChildContent>
+                </MudMenu>
+            </div>
+        </MudAppBar>
+
+        <article class="m-0 p-0">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    MudTheme MyCustomTheme = new MudTheme()
+        {
+
+
+            PaletteLight = new PaletteLight()
+            {
+                Primary = "#1f2229",
+                Secondary = Colors.Green.Accent4,
+                AppbarBackground = Colors.Red.Default,
+                White = Colors.Teal.Lighten5,
+
+
+            },
+            PaletteDark = new PaletteDark()
+            {
+                Primary = "#1f2229",
+            },
+
+
+        };
+
+}
+
+

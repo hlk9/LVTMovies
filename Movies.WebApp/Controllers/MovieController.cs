@@ -127,7 +127,7 @@ namespace Movies.WebApp.Controllers
 
 
                        try
-                        {
+                        { 
                             ViewBag.ReleaseDate = detailJson["release_date"].ToString().Split("-")[0];
                         }
                         catch

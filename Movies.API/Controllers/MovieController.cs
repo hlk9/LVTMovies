@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Movies.DAL.Models;
 using Movies.DAL.ViewModels;
 using System.Net.WebSockets;
+using QRCoder;
 
 namespace Movies.API.Controllers
 {
@@ -95,7 +96,20 @@ namespace Movies.API.Controllers
                 {
                     return false;
                 }
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://localhost:7154/Movie/Detail/"+movie.Id, QRCodeGenerator.ECCLevel.Q);
+                SvgQRCode qrCode = new SvgQRCode(qrCodeData);
+                string qrCodeImage = qrCode.GetGraphic(512);
+                string currentPath =Directory.GetParent(Directory.GetCurrentDirectory()) + "\\Movies.WebApp\\wwwroot\\QRCodes";
 
+                string qrPath = currentPath + "\\" + movie.Id + ".svg";
+                using (var fs = System.IO.File.Create(qrPath))
+                {
+                    // File is created and stream is closed properly after this block
+                }
+                System.IO.File.WriteAllText(qrPath, qrCodeImage);
+                string finalPath = "/QRCodes/" + movie.Id + ".svg";
+                movie.QRPath = finalPath;
                 context.Movies.Add(movie);
                 context.SaveChanges();
             }
@@ -149,6 +163,7 @@ namespace Movies.API.Controllers
 
                 context.MovieGenres.Add(mg);
                 context.SaveChanges();
+
                 return true;
             }
             catch

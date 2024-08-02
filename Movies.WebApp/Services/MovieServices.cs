@@ -1,6 +1,9 @@
-﻿using Movies.DAL.Models;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Movies.DAL.Models;
 using Movies.DAL.ViewModels;
 using Newtonsoft.Json;
+using QRCoder;
+using System.Drawing;
 
 namespace Movies.WebApp.Services
 {
@@ -64,6 +67,10 @@ namespace Movies.WebApp.Services
             {
                 HttpClient client2 = new HttpClient();
                 string requestUrl2 = baseURL + "Movie/Add-Movie-Genre";
+              
+
+
+
                 return true;
             }
             return false;
