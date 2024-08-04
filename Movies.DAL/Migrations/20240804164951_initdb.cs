@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Movies.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class s1 : Migration
+    public partial class initdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,10 +47,11 @@ namespace Movies.DAL.Migrations
                     StreamURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RentalPrice = table.Column<double>(type: "float", nullable: false),
                     SalePrice = table.Column<double>(type: "float", nullable: false),
-                    Status = table.Column<string>(type: "NVARCHAR(30)", maxLength: 30, nullable: false),
+                    Status = table.Column<string>(type: "NVARCHAR(30)", maxLength: 30, nullable: true),
                     Bugget = table.Column<double>(type: "float", nullable: false),
                     BackdropURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PosterURL = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PosterURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QRPath = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

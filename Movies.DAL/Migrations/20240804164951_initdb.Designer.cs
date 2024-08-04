@@ -12,8 +12,8 @@ using Movies.DAL.Context;
 namespace Movies.DAL.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20240712161016_ss3")]
-    partial class ss3
+    [Migration("20240804164951_initdb")]
+    partial class initdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
