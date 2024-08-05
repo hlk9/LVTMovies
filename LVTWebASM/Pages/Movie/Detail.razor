@@ -1,0 +1,226 @@
+﻿@page "/Detail/{id:int}"
+@using Movies.DAL.Models
+@using Newtonsoft.Json
+@using System.Net.Http.Headers
+<h3>@Id</h3>
+
+<article>
+
+    @if(CurrentMovie==null)
+    {
+        <h4>Đang tải</h4>
+    }
+    else
+    {
+
+        <section class="movie-detail position-relative" style="background:url(@CurrentMovie.BackdropURL)">
+
+            <div class="container">
+
+                <figure class="movie-detail-banner">
+
+                    <img src="@CurrentMovie.PosterURL" alt="">
+
+                    <button class="play-btn">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                    </button>
+
+                </figure>
+
+                <div class="movie-detail-content p-2 rounded-3" style="background-color:rgb(36 44 56 / 60%);">
+
+                    @* <p class="detail-subtitle">New Episodes</p> *@
+
+                    <h1 class="h1 detail-title">
+                        @CurrentMovie.Title
+                    </h1>
+
+                    <div class="meta-wrapper">
+
+                        <div class="badge-wrapper">
+                            <div class="badge badge-fill">PG 13</div>
+
+                            <div class="badge badge-outline">HD</div>
+                        </div>
+
+                        <div class="ganre-wrapper">
+                            @*     @if (ViewBag.GenreM != null)
+                        {
+                        foreach (string item in ViewBag.GenreM)
+                        {
+                        <a href="#">@item</a>
+                        }
+                        } *@
+
+
+                        </div>
+
+                        <div class="date-time">
+
+                            <div>
+                                <ion-icon name="calendar-outline"></ion-icon>
+
+                                <time datetime="2021">ViewBag.ReleaseDate</time>
+                            </div>
+
+                            <div>
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT115M">115 min</time>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="storyline">
+                        @CurrentMovie.Description
+                    </p>
+
+                    <div class="details-actions  border-0" style="background-color:rgb(36 44 56 / 0%);">
+
+                        @*    <button class="share">
+                    <ion-icon name="share-social"></ion-icon>
+
+                    <span>Chia sẻ</span>
+                    </button> *@
+
+                        <div class="title-wrapper">
+                            <p class="title">Thuê phim</p>
+
+                            <p class="text">Chỉ @CurrentMovie.RentalPrice cho 7 ngày</p>
+                        </div>
+
+
+                        <a class="btn btn-primary" asp-action="CheckOut" asp-controller="Bill" asp-route-mId="@CurrentMovie.Id">
+                            <ion-icon name="play"></ion-icon>
+
+                            <span>Xem ngay</span>
+
+                        </a>
+
+
+                        <img width="15%" src="@CurrentMovie.QRPath" />
+
+
+
+
+
+
+                    </div>
+
+
+                    <a href="~/assets/images/movie-4.png" download class="download-btn">
+                        <span>Download</span>
+
+                        <ion-icon name="download-outline"></ion-icon>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+        <!--
+          - #TV SERIES
+        -->
+
+        <section class="tv-series">
+            <div class="container">
+
+                <p class="section-subtitle">Các phim liên quan</p>
+
+                <h2 class="h2 section-title">HOT trong tháng</h2>
+
+                <ul class="movies-list">
+                    @*  @foreach (MoviePopularViewModel item in ViewBag.PopularMovies)
+                {
+                <li>
+                <div class="movie-card">
+
+                <a asp-controller="Movie" asp-action="Detail" asp-route-id="@item.MovieId">
+                <figure class="card-banner">
+                <img src="https://image.tmdb.org/t/p/original/@item.PosterPath" alt="">
+                </figure>
+                </a>
+
+                <div class="title-wrapper">
+                <a href="./movie-details.html">
+                <h3 class="card-title">@item.Title</h3>
+                </a>
+
+                <time datetime="2022">@item.ReleaseDate.Year</time>
+                </div>
+
+                <div class="card-meta">
+                <div class="badge badge-outline">HD</div>
+
+                <div class="duration">
+                <ion-icon name="time-outline"></ion-icon>
+
+                <time datetime="PT137M">137 min</time>
+                </div>
+
+                <div class="rating">
+                <ion-icon name="star"></ion-icon>
+
+                <data>@item.Rating</data>
+                </div>
+                </div>
+
+                </div>
+                </li>
+                } *@
+
+                </ul>
+
+            </div>
+        </section>
+    }
+
+
+
+
+</article>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Movie CurrentMovie { get; set; }
+    private string baseURL = "https://localhost:7279/";
+
+
+    protected async override void OnInitialized()
+    {
+
+        using (var client = new HttpClient())
+        {
+            client.BaseAddress = new Uri(baseURL);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage res = await client.GetAsync("Movie?id="+Id);
+            if (res.IsSuccessStatusCode)
+            {
+                var moviesRes = res.Content.ReadAsStringAsync().Result;
+                CurrentMovie = JsonConvert.DeserializeObject<Movie>(moviesRes);
+                if (CurrentMovie != null)
+                {
+
+
+                    StateHasChanged();
+                }
+
+
+            }
+
+        }
+
+    }
+
+}
