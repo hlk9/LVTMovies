@@ -1,4 +1,20 @@
-﻿@using Movies.WebApp.ViewModel
+﻿@page "/Upcoming"
+
+@using Movies.DAL.Models
+@using Movies.WebApp.ViewModel
+@using System.Net.Http.Headers
+@using Newtonsoft.Json
+
+<style>
+    .mud-input-label.mud-input-label-inputcontrol {
+        color: white !important;
+    }
+
+    .mud-input-outlined-border {
+        border-color: red !important;
+    }
+
+</style>
 <section class="upcoming">
     <div class="container">
 
@@ -28,63 +44,153 @@
 
         </div>
 
-        <ul class="movies-list  has-scrollbar">
+        <ul class="movies-list d-flex flex-column  has-scrollbar">
+            <div class="row-12 d-flex justify-end">
+                <MudSelect Margin="Margin.Dense" T="int" Label="Thể loại" @bind-Value="CurrentGenreId" AnchorOrigin="Origin.BottomCenter" SelectedValuesChanged="GenreChanged">
 
 
-            @foreach (MoviePopularViewModel item in PopularMovies)
-            {
-                <li>
-                    <div class="movie-card">
+                    @if (ListAllGerne != null)
+                    {
 
-                        <a asp-controller="Movie" asp-action="Detail" asp-route-id="@item.MovieId">
-                            <figure class="card-banner">
-                                <img src="https://image.tmdb.org/t/p/original/@item.PosterPath" alt="">
-                            </figure>
+
+                        @foreach (var item in ListAllGerne)
+                        {
+                            <MudSelectItem Value="@item.Id">@item.Name</MudSelectItem>
+                        }
+                    }
+
+                    @*     <MudSelectItem  Value="@("Tyrannosaur")" >Hành động</MudSelectItem>
+                    <MudSelectItem Value="@("Triceratops")" >Viễn tưởng</MudSelectItem>
+                    <MudSelectItem  Value="@("Henon Rex")">Hài Hước </MudSelectItem> *@
+                </MudSelect>
+            </div>
+            <div class="row">
+
+                @if (PopularMovies != null)
+                {
+                    foreach (var item in PopularMovies)
+                    {
+
+                        <a href="/Detail/@item.Id" class="col-3 mb-5">
+                            <img width="100%" src="@item.PosterURL" />
+                            <h6 class="nav-link text-white pt-3 text-center fw-bold">@item.Title</h6>
                         </a>
-
-                        <div class="title-wrapper">
-                            <a href="./movie-details.html">
-                                <h3 class="card-title">@item.Title</h3>
-                            </a>
-
-                            <time datetime="2022">@item.ReleaseDate.Year</time>
-                        </div>
-
-                        <div class="card-meta">
-                            <div class="badge badge-outline">HD</div>
-
-                            <div class="duration">
-                                <ion-icon name="time-outline"></ion-icon>
-
-                                <time datetime="PT137M">137 min</time>
-                            </div>
-
-                            <div class="rating">
-                                <ion-icon name="star"></ion-icon>
-
-                                <data>@item.Rating</data>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-            }
+                    }
+                }
+                else
+                {
+                    <p>Không có phim nào</p>
+                }
 
 
 
-
-
+            </div>
         </ul>
 
     </div>
 </section>
 
 @code {
-    private List<MoviePopularViewModel> PopularMovies { get; set; }
+    private List<Movie> PopularMovies { get; set; }
+    private List<Genre> ListAllGerne { get; set; }
+    private string baseURL = "https://localhost:7279/";
+
+    private int CurrentGenreId { get; set; }
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+
+        using (var client = new HttpClient())
+        {
+            client.BaseAddress = new Uri(baseURL);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage res = await client.GetAsync("Movie/Get-All-Movies");
+            if (res.IsSuccessStatusCode)
+            {
+                var moviesRes = res.Content.ReadAsStringAsync().Result;
+                PopularMovies = JsonConvert.DeserializeObject<List<Movie>>(moviesRes);
+                if (PopularMovies != null)
+                {
+                 
+
+                    StateHasChanged();
+                }
+
+
+            }
+
+        }
+
+
+
+        using (var client = new HttpClient())
+        {
+            client.BaseAddress = new Uri(baseURL);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage res = await client.GetAsync("Genre/Get-All-GenreActive");
+            if (res.IsSuccessStatusCode)
+            {
+                var moviesRes = res.Content.ReadAsStringAsync().Result;
+                ListAllGerne = JsonConvert.DeserializeObject<List<Genre>>(moviesRes);
+                if (ListAllGerne != null)
+                {
+
+                    StateHasChanged();
+                }
+
+
+            }
+
+        }
+
+
+    }
+
+    private async Task GenreChanged()
+    {
+       
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseURL);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage res = await client.GetAsync("Movie/get-movie-by-genre-id" + "?id=" + CurrentGenreId);
+                if (res.IsSuccessStatusCode)
+                {
+                    var moviesRes = res.Content.ReadAsStringAsync().Result;
+                    PopularMovies = JsonConvert.DeserializeObject<List<Movie>>(moviesRes);
+                    if (PopularMovies != null)
+                    {
+
+
+                        StateHasChanged();
+                    }
+
+
+                }
+
+            }
+
+
+        
+    }
+
 
     protected override void OnInitialized()
     {
-        
+        OnInitializedAsync();
+
+
+
     }
+
+
 
 }
